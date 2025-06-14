@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 const Index = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
