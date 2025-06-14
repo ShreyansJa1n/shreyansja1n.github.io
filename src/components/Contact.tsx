@@ -1,5 +1,5 @@
 
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, File } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Contact = () => {
@@ -19,7 +19,7 @@ export const Contact = () => {
             variant="outline"
             className="bg-white text-blue-600 border-white hover:bg-blue-50 shadow-lg"
           >
-            <a href="mailto:shreyans.jain@example.com">
+            <a href="mailto:shreyansjain.work@gmail.com">
               <Mail className="mr-2 h-5 w-5" />
               Email Me
             </a>
@@ -48,10 +48,22 @@ export const Contact = () => {
               GitHub
             </a>
           </Button>
+
+          <Button 
+            asChild 
+            size="lg" 
+            variant="outline"
+            className="bg-white text-blue-600 border-white hover:bg-blue-50 shadow-lg"
+          >
+            <a href="ShreyansResume.pdf" target="_blank" rel="noopener noreferrer">
+              <File className="mr-2 h-5 w-5" />
+              Resume
+            </a>
+          </Button>
         </div>
         
         <p className="text-blue-100">
-          © 2025 Shreyans Jain. Built with React and Tailwind CSS.
+          © 2025 Shreyans Jain. Built with ❤️ using React and Tailwind CSS.
         </p>
       </div>
     </section>

@@ -1,4 +1,4 @@
-
+import React, { useState } from "react";
 import { Github, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -49,6 +49,16 @@ export const Projects = () => {
     }
   ];
 
+  const [expanded, setExpanded] = useState(Array(projects.length).fill(false));
+
+  const handleExpand = (idx: number) => {
+    setExpanded((prev) => {
+      const copy = [...prev];
+      copy[idx] = !copy[idx];
+      return copy;
+    });
+  };
+
   return (
     <section id="projects" className="py-20 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -57,46 +67,58 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={project.title}
-              className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg"
+              className="flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg h-[430px]"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <CardHeader>
                 <CardTitle className="text-xl text-gray-800">{project.title}</CardTitle>
-                <CardDescription className="text-gray-600 leading-relaxed">
-                  {project.description}
-                </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span 
-                        key={tech}
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                        +{project.technologies.length - 4} more
-                      </span>
-                    )}
+              <CardContent className="flex flex-col flex-1 justify-between">
+                <div className="flex flex-col flex-1">
+                  <div className="min-h-[72px]">
+                    <CardDescription className="text-gray-600 leading-relaxed">
+                      <span className={expanded[index] ? "" : "line-clamp-3"}>{project.description}</span>
+                      {project.description.length > 170 && (
+                        <button
+                          className="ml-2 text-blue-600 hover:underline text-sm focus:outline-none"
+                          onClick={() => handleExpand(index)}
+                        >
+                          {expanded[index] ? "Less" : "More"}
+                        </button>
+                      )}
+                    </CardDescription>
                   </div>
-                  <div className="flex gap-3">
-                    <Button asChild size="sm" className="bg-gray-800 hover:bg-gray-900">
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button asChild size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <Code className="mr-2 h-4 w-4" />
-                        Demo
-                      </a>
-                    </Button>
+                  <div className="min-h-[56px] mt-4 flex items-end">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 6).map((tech) => (
+                        <span 
+                          key={tech}
+                          className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 6 && (
+                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                          +{project.technologies.length - 6} more
+                        </span>
+                      )}
+                    </div>
                   </div>
+                </div>
+                <div className="flex gap-3 mt-6">
+                  <Button asChild size="sm" className="bg-gray-800 hover:bg-gray-900">
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4" />
+                      Code
+                    </a>
+                  </Button>
+                  {/* <Button asChild size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <Code className="mr-2 h-4 w-4" />
+                      Demo
+                    </a>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>
