@@ -70,13 +70,13 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={project.title}
-              className={`rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${darkMode ? 'bg-gray-800 text-white border-gray-700' : 'bg-white text-gray-800 border-gray-200'}`}
+              className={`flex flex-col rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${darkMode ? 'bg-gray-800 text-white border-gray-700' : 'bg-white text-gray-800 border-gray-200'}`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <CardHeader>
                 <CardTitle className={`text-xl ${darkMode ? 'text-white' : 'text-gray-800'}`}>{project.title}</CardTitle>
               </CardHeader>
-              <CardContent className={`flex flex-col flex-1 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} rounded-xl`}>
+              <CardContent className={`flex flex-col flex-1 justify-between ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} rounded-xl`}>
                 <div className="flex flex-col flex-1">
                   <div className="min-h-[72px]">
                     <CardDescription className={`leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -111,19 +111,13 @@ export const Projects = () => {
                 </div>
                 <div className="flex gap-3 mt-6">
                   {project.githubUrl && (
-                    <Button asChild size="sm" className={`${darkMode ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-800 hover:bg-gray-900'} transition-colors duration-300`}>
+                    <Button asChild className={`${darkMode ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-800 hover:bg-gray-900'} transition-colors duration-300 w-full`}>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="mr-2 h-4 w-4" />
                         Code
                       </a>
                     </Button>
                   )}
-                  {/* <Button asChild size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <Code className="mr-2 h-4 w-4" />
-                      Demo
-                    </a>
-                  </Button> */}
                 </div>
               </CardContent>
             </Card>
