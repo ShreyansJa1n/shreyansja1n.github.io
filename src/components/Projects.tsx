@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Github, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import DarkModeContext from "@/contexts/dark";
+import { useContext } from "react";
 
 export const Projects = () => {
+  const darkMode = useContext(DarkModeContext);
   const projects = [
     {
       title: "Kubernetes Cluster Management with AWS Integration",
@@ -42,9 +45,9 @@ export const Projects = () => {
     },
     {
       title: "Image Manipulation Software",
-      description: "Comprehensive image processing application built with extensibility and maintainability at its core. Demonstrates advanced software architecture principles through multiple design patterns and TDD practices.",
+      description: "Comprehensive image processing application built with extensibility and maintainability at its core. Demonstrates advanced software architecture principles through multiple design patterns and TDD practices.\nSource code available on request.",
       technologies: ["Java", "Java Swing", "Design Patterns", "TDD", "JUnit", "IntelliJ IDEA"],
-      githubUrl: "https://github.com/ShreyansJa1n",
+      githubUrl: "",
       liveUrl: "#"
     }
   ];
@@ -60,23 +63,23 @@ export const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-6 bg-white">
+    <section id="projects" className={`py-20 px-6 ${darkMode ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Featured Projects</h2>
+        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Featured Projects</h2>
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <Card
               key={project.title}
-              className="flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 shadow-lg h-[430px]"
+              className={`rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${darkMode ? 'bg-gray-800 text-white border-gray-700' : 'bg-white text-gray-800 border-gray-200'}`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <CardHeader>
-                <CardTitle className="text-xl text-gray-800">{project.title}</CardTitle>
+                <CardTitle className={`text-xl ${darkMode ? 'text-white' : 'text-gray-800'}`}>{project.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-col flex-1 justify-between">
+              <CardContent className={`flex flex-col flex-1 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} rounded-xl`}>
                 <div className="flex flex-col flex-1">
                   <div className="min-h-[72px]">
-                    <CardDescription className="text-gray-600 leading-relaxed">
+                    <CardDescription className={`leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                       <span className={expanded[index] ? "" : "line-clamp-3"}>{project.description}</span>
                       {project.description.length > 170 && (
                         <button
@@ -91,7 +94,7 @@ export const Projects = () => {
                   <div className="min-h-[56px] mt-4 flex items-end">
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.slice(0, 6).map((tech) => (
-                        <span 
+                        <span
                           key={tech}
                           className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
                         >
@@ -107,12 +110,14 @@ export const Projects = () => {
                   </div>
                 </div>
                 <div className="flex gap-3 mt-6">
-                  <Button asChild size="sm" className="bg-gray-800 hover:bg-gray-900">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </a>
-                  </Button>
+                  {project.githubUrl && (
+                    <Button asChild size="sm" className={`${darkMode ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-800 hover:bg-gray-900'} transition-colors duration-300`}>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        Code
+                      </a>
+                    </Button>
+                  )}
                   {/* <Button asChild size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <Code className="mr-2 h-4 w-4" />

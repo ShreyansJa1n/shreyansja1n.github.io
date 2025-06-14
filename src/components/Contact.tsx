@@ -1,10 +1,13 @@
 
 import { Mail, Linkedin, Github, File } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DarkModeContext from "@/contexts/dark";
+import { useContext } from "react";
 
 export const Contact = () => {
+  const darkMode = useContext(DarkModeContext);
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+    <section id="contact" className={`py-20 px-6 bg-gradient-to-r ${darkMode ? 'from-blue-600 to-indigo-900' : 'from-blue-300 to-indigo-600'} text-white`}>
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
         <p className="text-xl mb-8 opacity-90">
