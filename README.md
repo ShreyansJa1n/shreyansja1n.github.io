@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# Shreyans Jain – Developer Portfolio 🚀
 
-## Project info
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite"/>
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="React Router"/>
+  <img src="https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white" alt="React Query"/>
+  <img src="https://img.shields.io/github/actions/workflow/status/ShreyansJa1n/shreyansja1n.github.io/portfolio_workflow.yml?branch=main&label=GitHub%20Actions&logo=github&style=for-the-badge" alt="GitHub Actions"/>
+</p>
 
-**URL**: https://lovable.dev/projects/56429ff9-e118-4815-8a4c-bf148d02655f
+A modern, responsive, and animated portfolio website to showcase my projects, skills, certifications, and experience as a Software Development Engineer and Computer Science student.
 
-## How can I edit this code?
+## 🌟 Features
+- Beautiful hero section with animated backgrounds
+- Dark/light mode toggle (persistent)
+- Projects, skills, and certifications sections
+- Responsive design for all devices
+- Smooth animations and interactive UI
+- Built with React, TypeScript, Tailwind CSS, and more
+- **CI/CD:** Integrated with GitHub Actions for automated testing and deployment
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Routing:** React Router
+- **State Management:** React Context
+- **Icons:** Lucide React
+- **Other:** Vite, React Query, GitHub Actions
 
-**Use Lovable**
+## 📸 Screenshots
+<!-- Add screenshots here if you wish -->
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/56429ff9-e118-4815-8a4c-bf148d02655f) and start prompting.
+## 🚀 Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ShreyansJa1n/shreyansja1n.github.io.git
+   cd shreyansja1n.github.io
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. **Run locally:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. **Open in browser:**
+   Visit [http://localhost:5173](http://localhost:5173)
 
-**Use your preferred IDE**
+## 📁 Folder Structure
+- `src/components/` – All React components (Hero, Projects, Skills, Certifications, etc.)
+- `src/pages/` – Page components
+- `src/contexts/` – Context providers (e.g., dark mode)
+- `src/assets/` – Images and static assets
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📄 License
+[MIT](LICENSE)
 
-Follow these steps:
+## 👋 Contact
+- [LinkedIn](https://linkedin.com/in/shrejae)
+- [GitHub](https://github.com/ShreyansJa1n)
+- [Email](mailto:shreyansjain.work@gmail.com)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/56429ff9-e118-4815-8a4c-bf148d02655f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+> Designed & built with ❤️ by Shreyans Jain
