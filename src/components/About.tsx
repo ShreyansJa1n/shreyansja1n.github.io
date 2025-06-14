@@ -20,22 +20,22 @@ export const About = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className={`bg-gradient-to-br ${darkMode ? 'from-gray-600 to-gray-900' : 'from-blue-50 to-indigo-50'} p-6 rounded-xl border ${darkMode ? 'border-blue-950' : 'border-blue-100'}`}>
                 <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Enterprise Software Development</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>Architected mission-critical systems at Trellix, resolving bugs affecting 30% of enterprise clients and improving performance by 40%. Built security plugins and optimized data synchronization for thousands of users.</p>
+                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Architected mission-critical systems at Trellix, resolving bugs affecting 30% of enterprise clients and improving performance by 40%. Built security plugins and optimized data synchronization for thousands of users.</p>
               </div>
 
               <div className={`bg-gradient-to-br ${darkMode ? 'from-green-600 to-emerald-900' : 'from-green-50 to-emerald-50'} p-6 rounded-xl border ${darkMode ? 'border-green-950' : 'border-green-100'}`}>
                 <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>DevOps & Cloud Engineering</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>Deploy scalable infrastructure using Kubernetes, Docker, and AWS (EKS, ECR, S3, EC2). Expert in Infrastructure as Code and managing production-grade cloud deployments.</p>
+                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Deploy scalable infrastructure using Kubernetes, Docker, and AWS (EKS, ECR, S3, EC2). Expert in Infrastructure as Code and managing production-grade cloud deployments.</p>
               </div>
 
               <div className={`bg-gradient-to-br ${darkMode ? 'from-purple-600 to-violet-900' : 'from-purple-50 to-violet-50'} p-6 rounded-xl border ${darkMode ? 'border-purple-950' : 'border-purple-100'}`}>
                 <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Mobile Development</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>Built native iOS apps with Swift/UIKit and cross-platform solutions with Flutter. Integrated real-time APIs, biometric authentication, and served 1000+ users.</p>
+                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Built native iOS apps with Swift/UIKit and cross-platform solutions with Flutter. Integrated real-time APIs, biometric authentication, and served 1000+ users.</p>
               </div>
 
               <div className={`bg-gradient-to-br ${darkMode ? 'from-orange-600 to-red-900' : 'from-orange-50 to-red-50'} p-6 rounded-xl border ${darkMode ? 'border-orange-950' : 'border-orange-100'}`}>
                 <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Data Engineering</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>Transform raw data into optimized databases and analytics platforms using R, Python, and SQL. Built data warehouses with star schemas and ETL pipelines.</p>
+                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Transform raw data into optimized databases and analytics platforms using R, Python, and SQL. Built data warehouses with star schemas and ETL pipelines.</p>
               </div>
             </div>
           </div>
