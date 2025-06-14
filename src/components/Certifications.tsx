@@ -55,13 +55,13 @@ export const Certifications = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <CardHeader>
-                <CardTitle className={`text-lg ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>{cert.title}</CardTitle>
+                <CardTitle className={`text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>{cert.title}</CardTitle>
                 <CardDescription className="text-blue-600 font-medium">
                   {cert.issuer} • {cert.date}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className={`text-gray-600 mb-4 ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>{cert.description}</p>
+                <p className={`text-gray-600 mb-4 ${darkMode ? 'text-white' : 'text-gray-600'}`}>{cert.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill) => (
                     <span 
