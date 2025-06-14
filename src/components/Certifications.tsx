@@ -66,7 +66,7 @@ export const Certifications = () => {
                   {cert.skills.map((skill) => (
                     <span 
                       key={skill}
-                      className={`bg-gradient-to-r ${darkMode ? 'from-blue-600 to-blue-700 text-gray-200' : 'from-blue-600 to-blue-700 text-gray-200'} px-3 py-1 rounded-full text-sm font-medium`}
+                      className={`bg-gradient-to-r ${darkMode ? 'from-blue-600 to-blue-700 text-gray-200' : 'from-blue-100 to-blue-100 text-gray-900'} px-3 py-1 rounded-full text-sm font-medium`}
                     >
                       {skill}
                     </span>
