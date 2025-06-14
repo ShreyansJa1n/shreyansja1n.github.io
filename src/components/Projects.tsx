@@ -53,6 +53,15 @@ export const Projects = () => {
   ];
 
   const [expanded, setExpanded] = useState(Array(projects.length).fill(false));
+  const [expandedSkills, setExpandedSkills] = useState(Array(projects.length).fill(false));
+
+  const handleExpandSkills = (idx: number) => {
+    setExpandedSkills((prev) => {
+      const copy = [...prev];
+      copy[idx] = !copy[idx];
+      return copy;
+    });
+  };
 
   const handleExpand = (idx: number) => {
     setExpanded((prev) => {
@@ -93,19 +102,32 @@ export const Projects = () => {
                   </div>
                   <div className="min-h-[56px] mt-4 flex items-end">
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.slice(0, 6).map((tech) => (
-                        <span
-                          key={tech}
-                          className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 6 && (
-                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                          +{project.technologies.length - 6} more
-                        </span>
-                      )}
+                      {!expandedSkills[index] ? <div className="flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 5).map((tech) => (
+                          <span
+                            key={tech}
+                            className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 5 && (
+                          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium hover:cursor-pointer" onClick={() => handleExpandSkills(index)}>
+                            +{project.technologies.length - 5} more
+                          </span>
+                        )}
+                      </div> :
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}</div>}
+
+
                     </div>
                   </div>
                 </div>
