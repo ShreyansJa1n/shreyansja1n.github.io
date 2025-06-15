@@ -23,13 +23,6 @@ export const Projects = () => {
       liveUrl: "#"
     },
     {
-      title: "DataForge - End-to-End Database Analytics Platform",
-      description: "Complete data engineering project transforming raw CSV data into a fully-functional relational database with sophisticated analytical capabilities. Demonstrates complete data science pipeline from exploration to insights.",
-      technologies: ["R", "R Markdown", "Data Analysis", "Database Design", "Statistical Computing"],
-      githubUrl: "https://github.com/ShreyansJa1n/DataForge",
-      liveUrl: "#"
-    },
-    {
       title: "ShapeTracer - Multimodal Learning Application",
       description: "Innovative SwiftUI application for motor skill assessment and rehabilitation through multimodal shape tracing with real-time feedback systems using visual, haptic, and audio feedback.",
       technologies: ["SwiftUI", "CoreHaptics", "AudioFeedbackManager", "SwiftTesting", "iOS Development"],
@@ -37,10 +30,31 @@ export const Projects = () => {
       liveUrl: "#"
     },
     {
+      title: "DataForge - End-to-End Database Analytics Platform",
+      description: "Complete data engineering project transforming raw CSV data into a fully-functional relational database with sophisticated analytical capabilities. Demonstrates complete data science pipeline from exploration to insights.",
+      technologies: ["R", "R Markdown", "Data Analysis", "Database Design", "Statistical Computing"],
+      githubUrl: "https://github.com/ShreyansJa1n/DataForge",
+      liveUrl: "#"
+    },
+    {
+      title: "Data Warehouse Implementation for Entertainment Distribution Merger",
+      description: "Comprehensive data warehousing project simulating a merger between two entertainment distribution companies. Demonstrates advanced ETL processes, data modeling, and analytical reporting.",
+      technologies: ["R","Rmd","ggplot2","SQL", "Data Warehousing", "ETL", "Data Modeling", "Reporting"],
+      githubUrl: "https://github.com/ShreyansJa1n/MediaFusion-Data-Warehouse",
+      liveUrl: "#"
+    },
+    {
       title: "QR-Based Image Upload for Moodle",
       description: "Security-focused Moodle plugin revolutionizing online examination by enabling secure image uploads through cryptographically-signed QR codes. Successfully deployed for 1000+ students.",
       technologies: ["PHP", "MySQL", "Moodle", "Apache", "XAMPP", "Web Development", "Security"],
       githubUrl: "https://github.com/ShreyansJa1n/Moodle-QRBasedImageUpload-LocalPlugin",
+      liveUrl: "#"
+    },
+    {
+      title: "This Portfolio Website",
+      description: "This portfolio itself—yes, it made it to my projects section! Built with React, Tailwind, and TypeScript, it’s a living showcase of my work. Automated with GitHub Actions, every update is built and deployed straight to GitHub Pages. Meta? Maybe. Effective? Absolutely!",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
+      githubUrl: "https://github.com/ShreyansJa1n/shreyansja1n.github.io",
       liveUrl: "#"
     },
     {
@@ -89,13 +103,13 @@ export const Projects = () => {
                 <div className="flex flex-col flex-1">
                   <div className="min-h-[72px]">
                     <CardDescription className={`leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                      <span className={expanded[index] ? "" : "line-clamp-3"}>{project.description}</span>
+                      <span className={expanded[index] ? "" : "line-clamp-6"}>{project.description}</span>
                       {project.description.length > 170 && (
                         <button
                           className="ml-2 text-blue-600 hover:underline text-sm focus:outline-none"
                           onClick={() => handleExpand(index)}
                         >
-                          {expanded[index] ? "Less" : "More"}
+                          
                         </button>
                       )}
                     </CardDescription>
