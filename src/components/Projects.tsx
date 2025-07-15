@@ -16,6 +16,13 @@ export const Projects = () => {
       liveUrl: "#"
     },
     {
+      title: "Financial Data Streaming Backend",
+      description: "A modern, event-driven backend for real-time financial data polling, analytics, and streaming, built with FastAPI, async SQLAlchemy, Kafka, Redis, and PostgreSQL. Designed for speed, scalability, and developer happiness.",
+      technologies: ["Python", "FastAPI", "Docker", "PostgreSQL", "SQLAlchemy", "Kafka", "ZooKeeper", "Redis", "Adminer", "REST APIs"],
+      githubUrl: "https://github.com/ShreyansJa1n/financial-data-streaming-backend",
+      liveUrl: "#"
+    },
+    {
       title: "Stock Market Simulator for iOS",
       description: "Comprehensive iOS application providing a risk-free environment for learning stock trading and portfolio management. Features real-time market data, secure authentication, and complete portfolio tracking.",
       technologies: ["Swift", "UIKit", "Firebase", "Yahoo Finance API", "Alamofire", "LocalAuthentication", "REST APIs"],

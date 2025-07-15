@@ -26,13 +26,13 @@ const Index = () => {
           </button>
         </nav>
         <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Certifications />
-      <Contact />
-    </DarkModeContext.Provider>
-  </div>
+        <About />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Contact />
+      </DarkModeContext.Provider>
+    </div>
   );
 };
 
