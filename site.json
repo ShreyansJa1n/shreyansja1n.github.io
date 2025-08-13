@@ -1,0 +1,144 @@
+{
+  "hero": {
+    "name": "Shreyans Jain",
+    "title": "Software Development Engineer & Computer Science Student",
+    "description": "Master's student at Northeastern University with 2 years of enterprise experience at Trellix. Passionate about creating innovative solutions through code. Currently seeking summer/fall 2025 internships to apply my skills in software development and contribute to meaningful projects."
+  },
+  "projectsSection": {
+    "title": "Featured Projects",
+    "projects": [
+    {
+      "title": "Kubernetes Cluster Management with AWS Integration",
+      "description": "Comprehensive DevOps project demonstrating modern container orchestration and cloud infrastructure management. Complete lifecycle deployment from local KIND environments to production-grade AWS EKS with Infrastructure as Code.",
+      "technologies": ["Kubernetes", "Docker", "Helm", "AWS (EKS, ECR, S3, IAM, EC2)", "Terraform", "KIND", "Nginx", "Shell Scripting"],
+      "githubUrl": "https://github.com/ShreyansJa1n/k8s-aws-kind-helm-docker",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Stock Market Simulator for iOS",
+      "description": "Comprehensive iOS application providing a risk-free environment for learning stock trading and portfolio management. Features real-time market data, secure authentication, and complete portfolio tracking.",
+      "technologies": ["Swift", "UIKit", "Firebase", "Yahoo Finance API", "Alamofire", "LocalAuthentication", "REST APIs"],
+      "githubUrl": "https://github.com/ShreyansJa1n/StockMarketSimulator-iOS",
+      "liveUrl": "#"
+    },
+    {
+      "title": "DataForge - End-to-End Database Analytics Platform",
+      "description": "Complete data engineering project transforming raw CSV data into a fully-functional relational database with sophisticated analytical capabilities. Demonstrates complete data science pipeline from exploration to insights.",
+      "technologies": ["R", "R Markdown", "Data Analysis", "Database Design", "Statistical Computing"],
+      "githubUrl": "https://github.com/ShreyansJa1n/DataForge",
+      "liveUrl": "#"
+    },
+    {
+      "title": "ShapeTracer - Multimodal Learning Application",
+      "description": "Innovative SwiftUI application for motor skill assessment and rehabilitation through multimodal shape tracing with real-time feedback systems using visual, haptic, and audio feedback.",
+      "technologies": ["SwiftUI", "CoreHaptics", "AudioFeedbackManager", "SwiftTesting", "iOS Development"],
+      "githubUrl": "https://github.com/ShreyansJa1n/ShapeTracer",
+      "liveUrl": "#"
+    },
+    {
+      "title": "QR-Based Image Upload for Moodle",
+      "description": "Security-focused Moodle plugin revolutionizing online examination by enabling secure image uploads through cryptographically-signed QR codes. Successfully deployed for 1000+ students.",
+      "technologies": ["PHP", "MySQL", "Moodle", "Apache", "XAMPP", "Web Development", "Security"],
+      "githubUrl": "https://github.com/ShreyansJa1n/Moodle-QRBasedImageUpload-LocalPlugin",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Image Manipulation Software",
+      "description": "Comprehensive image processing application built with extensibility and maintainability at its core. Demonstrates advanced software architecture principles through multiple design patterns and TDD practices.",
+      "technologies": ["Java", "Java Swing", "Design Patterns", "TDD", "JUnit", "IntelliJ IDEA"],
+      "githubUrl": "https://github.com/ShreyansJa1n",
+      "liveUrl": "#"
+    }
+  ]
+  },
+  "skillsSection": {
+    "title": "Technical Skills",
+    "categories": [
+      {
+        "title": "Programming Languages",
+        "skills": ["Python", "Java", "JavaScript", "TypeScript", "Swift", "C++", "R", "PHP", "Rust", "Dart", "HTML/CSS"]
+      },
+      {
+        "title": "Web & Mobile Frameworks",
+        "skills": ["React", "SwiftUI", "UIKit", "Flutter", "Node.js", "Express.js", "Spring Boot", "Django", "Bootstrap"]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "skills": ["AWS (EKS, ECR, S3, Lambda, EC2, IAM)", "Docker", "Kubernetes", "Terraform", "Helm", "Jenkins", "SonarQube", "KIND", "Minikube"]
+      },
+      {
+        "title": "Databases & Tools",
+        "skills": ["Firebase", "MongoDB", "PostgreSQL", "MySQL", "Git", "Linux", "Makefile", "Apache", "XAMPP"]
+      },
+      {
+        "title": "Soft Skills",
+        "skills": ["Problem Solving", "Team Collaboration", "Communication", "Leadership", "Time Management", "Adaptability"]
+      }
+    ]
+  },
+  "certificationsSection": {
+    "title": "Certifications & Professional Development",
+    "certifications": [
+    {
+      "title": "Kubernetes: Your First Project",
+      "issuer": "LinkedIn Learning",
+      "date": "June 2025",
+      "description": "Hands-on certification focusing on practical Kubernetes deployment and management fundamentals.",
+      "skills": ["Kubernetes", "Container Orchestration", "Cloud Infrastructure"]
+    },
+    {
+      "title": "Learning Kubernetes",
+      "issuer": "LinkedIn Learning",
+      "date": "June 2025",
+      "description": "Comprehensive training covering Kubernetes architecture, deployment strategies, and best practices.",
+      "skills": ["Kubernetes", "DevOps", "Cluster Management"]
+    },
+    {
+      "title": "Rust Essential Training",
+      "issuer": "LinkedIn Learning",
+      "date": "May 2024",
+      "description": "Advanced certification in Rust programming language focusing on performance-critical applications and systems programming.",
+      "skills": ["Rust Programming", "Systems Programming", "Memory Safety"]
+    },
+    {
+      "title": "Understanding and Visualization of Data with Python",
+      "issuer": "Coursera",
+      "date": "August 2019",
+      "description": "Professional certification in Python-based data analysis and visualization techniques.",
+      "skills": ["Python", "Data Analysis", "Data Visualization", "Statistical Computing"]
+    },
+    {
+      "title": "Flutter Developer",
+      "issuer": "Udemy",
+      "date": "Professional Development",
+      "description": "Specialized training in Flutter framework for building high-performance mobile applications.",
+      "skills": ["Flutter", "Cross-Platform Development", "Mobile Applications", "Dart"]
+    }
+  ]
+  },
+  "experienceSection": {
+    "title": "Experience",
+    "experience": [
+      {
+        "role": "Software Development Engineer",
+        "company": "Trellix (formerly McAfee Enterprise)",
+        "location": "India (Remote)",
+        "period": "Jul 2021 – Jul 2023",
+        "description": [
+          "Worked on enterprise security products, contributed to cloud-native microservices, CI/CD, and automation.",
+          "Led feature development and collaborated with global teams."
+        ]
+      },
+      {
+        "role": "Graduate Teaching Assistant",
+        "company": "Northeastern University",
+        "location": "Boston, MA",
+        "period": "Jan 2024 – Present",
+        "description": [
+          "Assisting in teaching core computer science courses.",
+          "Mentoring students and supporting course logistics."
+        ]
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import DarkModeContext from '@/contexts/dark';
 import { useContext } from 'react';
 export const About = () => {
-  const darkMode = useContext(DarkModeContext);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   return (
     <section id="about" className={`py-20 px-6 ${darkMode ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-4xl mx-auto">

@@ -1,0 +1,28 @@
+{
+  "experience": [
+    {
+      "role": "Graduate Teaching Assistant",
+      "company": "Northeastern University",
+      "location": "Boston, MA",
+      "period": "Sept 2024 - April 2025",
+      "description": [
+        "Led Theory of Computation as Lead TA for 200+ students across two semesters along with mentoring junior TAs",
+        "Conducted discussions and streamlined course coordination to improve student engagement"
+      ]
+    },
+    {
+      "role": "Software Development Engineer",
+      "company": "Trellix (formerly McAfee Enterprise)",
+      "location": "India (Remote)",
+      "period": "Aug 2022 - Aug 2024",
+      "description": [
+        "Fixed EventStreamer migration bugs by rewriting core modules, preventing data loss for 30% of enterprise clients",
+        "Enabled scalable deployments by creating Docker configurations for physical servers, and AWS EC2 instances",
+        "Optimized performance by analyzing code quality through SonarQube and addressing technical debt",
+        "Debugged enterprise Linux servers by analyzing performance metrics, conducting disk usage analysis, and creating shell and Python scripts for workflow automation and resolving critical issues",
+        "Fixed 50+ critical bugs, improving system stability by 20% and preventing potential service outages",
+        "Led cross-team collaborations that increased customer satisfaction scores by 15%"
+      ]
+    }
+  ]
+}

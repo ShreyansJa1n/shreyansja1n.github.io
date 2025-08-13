@@ -5,7 +5,7 @@ import DarkModeContext from "@/contexts/dark";
 import { useContext } from "react";
 
 export const Contact = () => {
-  const darkMode = useContext(DarkModeContext);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   return (
     <section id="contact" className={`py-20 px-6 bg-gradient-to-r ${darkMode ? 'from-blue-600 to-indigo-900' : 'from-blue-300 to-indigo-600'} text-white`}>
       <div className="max-w-4xl mx-auto text-center">

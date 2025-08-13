@@ -4,7 +4,7 @@ import { useContext } from "react";
 import DarkModeContext from "@/contexts/dark";
 
 export const Skills = () => {
-  const darkMode = useContext(DarkModeContext);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const skillCategories = [
     {
       title: "Programming Languages",

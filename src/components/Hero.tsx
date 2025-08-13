@@ -5,7 +5,7 @@ import DarkModeContext from "@/contexts/dark";
 
 
 export const Hero = () => {
-  const darkMode = useContext(DarkModeContext);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
 
   return (
     <section className={`min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'}`}>
@@ -102,7 +102,7 @@ export const Hero = () => {
           </Button>
         </div>
         <div className={`mt-8 text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} text-center`}>
-          <span className="font-bold">Available for internships and co-op positions from June 2025 - December 2025</span>
+          <span className="font-bold">Available for full-time positions from May 2026</span>
         </div>
       </div>
     </section>

@@ -1,3 +1,31 @@
+/* Custom styling for inline code in markdown (prose) */
+/* .prose code {
+  background-color: #f3f4f6;
+  color: #d6336c;
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.95em;
+}
+.dark .prose code {
+  background-color: #23272e;
+  color: #ffb86c;
+} */
+
+.prose.custom-blue {
+  --tw-prose-body: #2563eb; /* blue-600 */
+  --tw-prose-headings: #2563eb;
+  --tw-prose-links: #2563eb;
+  --tw-prose-bold: #2563eb;
+  --tw-prose-counters: #2563eb;
+  --tw-prose-bullets: #2563eb;
+  --tw-prose-quotes: #2563eb;
+  --tw-prose-code: #2563eb;
+  --tw-prose-pre-code: #2563eb;
+  --tw-prose-pre-bg: #f3f4f6;
+  --tw-prose-th-borders: #2563eb;
+  --tw-prose-td-borders: #2563eb;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
