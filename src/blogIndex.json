@@ -2,14 +2,14 @@
   {
     "slug": "k8s-aws",
     "title": "From Static Website to Cloud-Native: A Complete DevOps Journey with Kubernetes",
-    "date": "2024-06-01",
+    "date": "2025-06-03",
     "excerpt": "Comprehensive DevOps project demonstrating modern container orchestration and cloud infrastructure management.",
     "cover": "/assets/k8s-blog.png"
   },
   {
     "slug": "shapetracer_blog_post",
     "title": "Building ShapeTracer: A Multimodal iOS App for Motor Learning Research",
-    "date": "2024-06-01",
+    "date": "2025-05-14",
     "excerpt": "How I created an iOS app that combines visual, haptic, and audio feedback to enhance shape tracing exercises—and why it matters for motor skill development research.",
     "cover": "/assets/shapetracer-cover.png"
   }
