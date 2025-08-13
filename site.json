@@ -6,12 +6,18 @@
   },
   "projectsSection": {
     "title": "Featured Projects",
-    "projects": [
-    {
+    "projects": [{
       "title": "Kubernetes Cluster Management with AWS Integration",
       "description": "Comprehensive DevOps project demonstrating modern container orchestration and cloud infrastructure management. Complete lifecycle deployment from local KIND environments to production-grade AWS EKS with Infrastructure as Code.",
       "technologies": ["Kubernetes", "Docker", "Helm", "AWS (EKS, ECR, S3, IAM, EC2)", "Terraform", "KIND", "Nginx", "Shell Scripting"],
       "githubUrl": "https://github.com/ShreyansJa1n/k8s-aws-kind-helm-docker",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Financial Data Streaming Backend",
+      "description": "A modern, event-driven backend for real-time financial data polling, analytics, and streaming, built with FastAPI, async SQLAlchemy, Kafka, Redis, and PostgreSQL. Designed for speed, scalability, and developer happiness.",
+      "technologies": ["Python", "FastAPI", "Docker", "PostgreSQL", "SQLAlchemy", "Kafka", "ZooKeeper", "Redis", "Adminer", "REST APIs"],
+      "githubUrl": "https://github.com/ShreyansJa1n/financial-data-streaming-backend",
       "liveUrl": "#"
     },
     {
@@ -22,6 +28,13 @@
       "liveUrl": "#"
     },
     {
+      "title": "ShapeTracer - Multimodal Learning Application",
+      "description": "Innovative SwiftUI application for motor skill assessment and rehabilitation through multimodal shape tracing with real-time feedback systems using visual, haptic, and audio feedback.",
+      "technologies": ["SwiftUI", "CoreHaptics", "AudioFeedbackManager", "SwiftTesting", "iOS Development"],
+      "githubUrl": "https://github.com/ShreyansJa1n/ShapeTracer",
+      "liveUrl": "#"
+    },
+    {
       "title": "DataForge - End-to-End Database Analytics Platform",
       "description": "Complete data engineering project transforming raw CSV data into a fully-functional relational database with sophisticated analytical capabilities. Demonstrates complete data science pipeline from exploration to insights.",
       "technologies": ["R", "R Markdown", "Data Analysis", "Database Design", "Statistical Computing"],
@@ -29,10 +42,10 @@
       "liveUrl": "#"
     },
     {
-      "title": "ShapeTracer - Multimodal Learning Application",
-      "description": "Innovative SwiftUI application for motor skill assessment and rehabilitation through multimodal shape tracing with real-time feedback systems using visual, haptic, and audio feedback.",
-      "technologies": ["SwiftUI", "CoreHaptics", "AudioFeedbackManager", "SwiftTesting", "iOS Development"],
-      "githubUrl": "https://github.com/ShreyansJa1n/ShapeTracer",
+      "title": "Data Warehouse Implementation for Entertainment Distribution Merger",
+      "description": "Comprehensive data warehousing project simulating a merger between two entertainment distribution companies. Demonstrates advanced ETL processes, data modeling, and analytical reporting.",
+      "technologies": ["R","Rmd","ggplot2","SQL", "Data Warehousing", "ETL", "Data Modeling", "Reporting"],
+      "githubUrl": "https://github.com/ShreyansJa1n/MediaFusion-Data-Warehouse",
       "liveUrl": "#"
     },
     {
@@ -43,14 +56,20 @@
       "liveUrl": "#"
     },
     {
+      "title": "This Portfolio Website",
+      "description": "This portfolio itself—yes, it made it to my projects section! Built with React, Tailwind, and TypeScript, it’s a living showcase of my work. Automated with GitHub Actions, every update is built and deployed straight to GitHub Pages. Meta? Maybe. Effective? Absolutely!",
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
+      "githubUrl": "https://github.com/ShreyansJa1n/shreyansja1n.github.io",
+      "liveUrl": "#"
+    },
+    {
       "title": "Image Manipulation Software",
-      "description": "Comprehensive image processing application built with extensibility and maintainability at its core. Demonstrates advanced software architecture principles through multiple design patterns and TDD practices.",
+      "description": "Comprehensive image processing application built with extensibility and maintainability at its core. Demonstrates advanced software architecture principles through multiple design patterns and TDD practices.\nSource code available on request.",
       "technologies": ["Java", "Java Swing", "Design Patterns", "TDD", "JUnit", "IntelliJ IDEA"],
-      "githubUrl": "https://github.com/ShreyansJa1n",
+      "githubUrl": "",
       "liveUrl": "#"
     }
-  ]
-  },
+  ]},
   "skillsSection": {
     "title": "Technical Skills",
     "categories": [
