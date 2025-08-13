@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
@@ -11,8 +10,15 @@ import { Sun, Moon } from "lucide-react";
 import { Blogs } from "@/components/Blogs";
 import { Experience } from "@/components/Experience";
 import { NavBar } from "@/components/NavBar";
+import { useSearchParams, Navigate } from "react-router-dom";
 
 const Index = () => {
+  const [searchParams] = useSearchParams();
+  const to = searchParams.get("to");
+  if (to) {
+    return <Navigate to={to} replace />;
+  }
+
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const toggleDarkMode = () => {
     setDarkMode(prev => !prev);

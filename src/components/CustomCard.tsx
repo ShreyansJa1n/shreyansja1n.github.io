@@ -57,9 +57,6 @@ export const CustomCard = ({
             <Link to={buttonLink}>
               {icon} {buttonText}
             </Link>
-            {/* <a href={buttonLink} target="_blank" rel="noopener noreferrer">
-              {icon} {buttonText}
-            </a> */}
           </Button>
         </div>
       )}
