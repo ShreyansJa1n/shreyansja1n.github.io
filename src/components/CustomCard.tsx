@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface CustomCardProps {
   title: string;
@@ -53,9 +54,12 @@ export const CustomCard = ({
       {buttonText && buttonLink && (
         <div className="flex gap-3 mt-6">
           <Button asChild className={`${darkMode ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-800 hover:bg-gray-900'} transition-colors duration-300 w-full`}>
-            <a href={buttonLink} target="_blank" rel="noopener noreferrer">
+            <Link to={buttonLink}>
               {icon} {buttonText}
-            </a>
+            </Link>
+            {/* <a href={buttonLink} target="_blank" rel="noopener noreferrer">
+              {icon} {buttonText}
+            </a> */}
           </Button>
         </div>
       )}
