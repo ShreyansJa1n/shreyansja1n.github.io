@@ -12,8 +12,8 @@
     },
     {
       "role": "Software Development Engineer",
-      "company": "Trellix (formerly McAfee Enterprise)",
-      "location": "India (Remote)",
+      "company": "Trellix (formerly FireEye)",
+      "location": "Bangalore, India",
       "period": "Aug 2022 - Aug 2024",
       "description": [
         "Fixed EventStreamer migration bugs by rewriting core modules, preventing data loss for 30% of enterprise clients",
