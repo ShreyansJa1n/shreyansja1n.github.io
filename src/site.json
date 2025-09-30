@@ -1,6 +1,18 @@
 {
   "experience": [
     {
+      "role": "iOS Software Engineer Intern",
+      "company": "Lose It! (Ziff Davis)",
+      "location": "Boston, MA",
+      "period": "Sept 2025 - Present",
+      "description": [
+        "Own end-to-end development of consumer-facing iOS features impacting 50M+ users (2M+ daily active), collaborating with Product and Design teams to ship features that drove 15% increase in user engagement through A/B tested implementations",
+        "Architect new user components with SwiftUI while maintaining and refactoring legacy UIKit and Objective-C components for performance optimization and feature enhancements",
+        "Implemented error monitoring and crash analytics using Sentry to proactively identify and resolve production issues",
+        "Lead technical debt reduction initiative, modernizing 15K+ lines of legacy Objective-C to Swift and establishing best practices for code maintainability"
+      ]
+    },
+    {
       "role": "Graduate Teaching Assistant",
       "company": "Northeastern University",
       "location": "Boston, MA",
