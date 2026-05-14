@@ -1,66 +1,136 @@
+import { Smartphone, Code, Server, Cloud, Database, Sparkles } from "lucide-react";
+import { SectionReveal } from "./SectionReveal";
 
-import { Code, Smartphone, Cloud, Database, Briefcase } from "lucide-react";
-import { useContext } from "react";
-import DarkModeContext from "@/contexts/dark";
+const skillCategories = [
+  {
+    title: "iOS & Mobile",
+    icon: Smartphone,
+    skills: [
+      "Swift",
+      "Objective-C",
+      "SwiftUI",
+      "UIKit",
+      "Combine",
+      "Core Bluetooth",
+      "Core Data",
+      "Core Haptics",
+      "AVFoundation",
+      "XCTest",
+      "Xcode",
+      "Xcode Cloud",
+      "Instruments",
+    ],
+  },
+  {
+    title: "Programming Languages",
+    icon: Code,
+    skills: [
+      "Swift",
+      "Objective-C",
+      "Java",
+      "Python",
+      "C++",
+      "JavaScript",
+      "TypeScript",
+      "Go",
+      "SQL",
+      "R",
+    ],
+  },
+  {
+    title: "Backend & Frameworks",
+    icon: Server,
+    skills: ["FastAPI", "Express.js", "Django", "Flask", "React", "Node.js"],
+  },
+  {
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    skills: [
+      "AWS",
+      "Google Cloud",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "Grafana",
+      "Jenkins",
+      "Kafka",
+    ],
+  },
+  {
+    title: "Databases & Tools",
+    icon: Database,
+    skills: [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Firebase",
+      "Redis",
+      "Git",
+      "Linux",
+      "Bash/Shell",
+      "SonarQube",
+    ],
+  },
+];
+
+const currentlyDeepening = ["Swift Concurrency", "SwiftData", "Advanced Combine", "Swift Testing"];
 
 export const Skills = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
-  const skillCategories = [
-    {
-      title: "Programming Languages",
-      icon: Code,
-      skills: ["Python", "Java", "JavaScript", "TypeScript", "Swift", "C++", "R", "PHP", "Rust", "Dart", "HTML/CSS"]
-    },
-    {
-      title: "Web & Mobile Frameworks",
-      icon: Smartphone,
-      skills: ["React", "SwiftUI", "UIKit", "Flutter", "Node.js", "Express.js", "Spring Boot", "Django", "Bootstrap"]
-    },
-    {
-      title: "Cloud & DevOps",
-      icon: Cloud,
-      skills: ["AWS (EKS, ECR, S3, Lambda, EC2, IAM)", "Docker", "Kubernetes", "Terraform", "Helm", "Jenkins", "SonarQube", "KIND", "Minikube"]
-    },
-    {
-      title: "Databases & Tools",
-      icon: Database,
-      skills: ["Firebase", "MongoDB", "PostgreSQL", "MySQL", "Git", "Linux", "Makefile", "Apache", "XAMPP"]
-    },
-    {
-      title: "Soft Skills",
-      icon: Briefcase,
-      skills: ["Problem Solving", "Team Collaboration", "Communication", "Leadership", "Time Management", "Adaptability"]
-    }
-  ];
-
   return (
-    <section id="skills" className={`py-20 px-6 ${darkMode ? 'bg-black' : 'bg-white'}`}>
+    <section id="skills" className="section-y px-6 bg-[var(--surface-subtle)]">
       <div className="max-w-6xl mx-auto">
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Technical Skills</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {skillCategories.map((category, index) => (
-            <div 
-              key={category.title}
-              className={`rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center mb-4">
-                <category.icon className={`h-6 w-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'} mr-3`} />
-                <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{category.title}</h3>
+        <SectionReveal>
+          <span className="eyebrow">Technical skills</span>
+          <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
+            Tools I reach for, ordered iOS-first.
+          </h2>
+        </SectionReveal>
+
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillCategories.map((category, i) => (
+            <SectionReveal key={category.title} delay={i * 70}>
+              <article className="card-surface p-6 md:p-7 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-soft text-[#0071e3]">
+                    <category.icon className="h-4 w-4" />
+                  </span>
+                  <h3 className="text-tightish text-lg font-semibold text-ink dark:text-ink">
+                    {category.title}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="pill">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </SectionReveal>
+          ))}
+        </div>
+
+        <SectionReveal delay={120}>
+          <div className="mt-10 card-surface p-6 md:p-7">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-6 gap-4">
+              <div className="flex items-center gap-3 md:shrink-0">
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-soft text-[#0071e3]">
+                  <Sparkles className="h-4 w-4" />
+                </span>
+                <h3 className="text-tightish text-lg font-semibold text-ink dark:text-ink">
+                  Currently deepening
+                </h3>
               </div>
-              <div className="space-y-2">
-                {category.skills.map((skill) => (
-                  <span 
-                    key={skill}
-                    className="inline-block bg-blue-100 text-blue-800 px-3 py-1 text-sm font-medium mr-2 mb-2 rounded-md"
-                  >
-                    {skill}
+              <div className="flex flex-wrap gap-1.5">
+                {currentlyDeepening.map((item) => (
+                  <span key={item} className="pill pill-accent">
+                    {item}
                   </span>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </SectionReveal>
       </div>
     </section>
   );

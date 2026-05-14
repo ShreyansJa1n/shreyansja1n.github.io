@@ -10,7 +10,7 @@
     "slug": "shapetracer_blog_post",
     "title": "Building ShapeTracer: A Multimodal iOS App for Motor Learning Research",
     "date": "2025-05-14",
-    "excerpt": "How I created an iOS app that combines visual, haptic, and audio feedback to enhance shape tracing exercises—and why it matters for motor skill development research.",
+    "excerpt": "How I created an iOS app that combines visual, haptic, and audio feedback to enhance shape tracing exercises, and why it matters for motor skill development research.",
     "cover": "/assets/shapetracer-cover.png"
   }
 ]

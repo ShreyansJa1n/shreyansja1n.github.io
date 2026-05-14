@@ -1,44 +1,50 @@
+import site from "../site.json";
+import { SectionReveal } from "./SectionReveal";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import DarkModeContext from "@/contexts/dark";
-import { useContext } from "react";
-import site from "../../site.json";
+type Cert = {
+  title: string;
+  issuer: string;
+  date: string;
+  description: string;
+  skills: string[];
+};
 
 export const Certifications = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
-  const certifications = site.certificationsSection.certifications;
+  const certifications = (site as { certificationsSection?: { certifications?: Cert[] } })
+    .certificationsSection?.certifications || [];
 
   return (
-    <section id="certifications" className={`py-20 ${darkMode ? 'bg-black text-gray-200' : 'bg-white text-gray-800'}`}>
+    <section id="certifications" className="section-y px-6 bg-[var(--surface-subtle)]">
       <div className="max-w-6xl mx-auto">
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Certifications & Professional Development</h2>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <Card 
-              key={cert.title}
-              className={`rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${darkMode ? 'bg-gray-800 text-white border-gray-700' : 'bg-white text-gray-800 border-gray-200'}`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardHeader>
-                <CardTitle className={`text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>{cert.title}</CardTitle>
-                <CardDescription className="text-blue-600 font-medium">
-                  {cert.issuer} • {cert.date}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className={`text-gray-600 mb-4 ${darkMode ? 'text-white' : 'text-gray-600'}`}>{cert.description}</p>
-                <div className="flex flex-wrap gap-2">
+        <SectionReveal>
+          <span className="eyebrow">Certifications</span>
+          <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
+            Continuing to learn.
+          </h2>
+        </SectionReveal>
+
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {certifications.map((cert, i) => (
+            <SectionReveal key={cert.title} delay={i * 70}>
+              <article className="card-surface p-6 md:p-7 h-full flex flex-col">
+                <h3 className="text-tightish text-lg font-semibold text-ink dark:text-ink mb-2">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-[#0071e3] font-medium mb-3">
+                  {cert.issuer} · {cert.date}
+                </p>
+                <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-5 flex-1">
+                  {cert.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
                   {cert.skills.map((skill) => (
-                    <span 
-                      key={skill}
-                      className={`bg-gradient-to-r ${darkMode ? 'from-blue-600 to-blue-700 text-gray-200' : 'from-blue-100 to-blue-100 text-gray-900'} px-3 py-1 rounded-full text-sm font-medium`}
-                    >
+                    <span key={skill} className="pill">
                       {skill}
                     </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </article>
+            </SectionReveal>
           ))}
         </div>
       </div>

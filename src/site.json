@@ -1,25 +1,52 @@
 {
-  "experience": [
+  "education": [
     {
-      "role": "iOS Software Engineer Intern",
-      "company": "Lose It! (Ziff Davis)",
+      "school": "Northeastern University",
       "location": "Boston, MA",
-      "period": "Sept 2025 - Present",
-      "description": [
-        "Own end-to-end development of consumer-facing iOS features impacting 50M+ users (2M+ daily active), collaborating with Product and Design teams to ship features that drove 15% increase in user engagement through A/B tested implementations",
-        "Architect new user components with SwiftUI while maintaining and refactoring legacy UIKit and Objective-C components for performance optimization and feature enhancements",
-        "Implemented error monitoring and crash analytics using Sentry to proactively identify and resolve production issues",
-        "Lead technical debt reduction initiative, modernizing 15K+ lines of legacy Objective-C to Swift and establishing best practices for code maintainability"
+      "degree": "Master of Science in Computer Science",
+      "period": "Sept 2024 - Aug 2026",
+      "gpa": "3.94",
+      "coursework": [
+        "Mobile App Development (iOS)",
+        "Programming Design Paradigms",
+        "Algorithms",
+        "Database Management Systems",
+        "Natural Language Processing",
+        "Foundations of AI",
+        "Machine Learning",
+        "Computer Systems (OS)"
       ]
     },
     {
-      "role": "Graduate Teaching Assistant",
+      "school": "NIIT University",
+      "location": "India",
+      "degree": "Bachelor of Technology in Computer Science",
+      "period": "Aug 2018 - May 2022"
+    }
+  ],
+  "experience": [
+    {
+      "role": "iOS Software Engineer Co-op",
+      "company": "Lose It! (Ziff Davis)",
+      "location": "Boston, MA",
+      "period": "Sept 2025 - Dec 2025",
+      "description": [
+        "Achieved zero critical incidents across weekly releases to 50M+ users (measured by Sentry error rates and App Store stability metrics) by owning end-to-end iOS release cycles and on-call workflows, using Instruments to profile and resolve performance bottlenecks before production",
+        "Generated $100K+ in revenue within 10 days (measured by A/B test conversion analytics) by building the Deal Center feature end-to-end in Swift, SwiftUI, and Combine across paywall and pricing experiment flows",
+        "Improved onboarding completion rate by 15% (measured by funnel analytics) by rebuilding onboarding flows with Lottie and ReactiveSwift, and implementing VoiceOver accessibility across 30+ screens (~90% coverage)",
+        "Reduced technical debt across 18K+ lines of legacy code (measured by SonarQube maintainability scores) by migrating Objective-C/UIKit surfaces to Swift/SwiftUI under MVVM, with SwiftLint standards enforced",
+        "Accelerated release documentation turnaround by 60% (measured by release cycle time) by building internal AI-assisted tooling that automated release notes generation while maintaining compliance standards",
+        "Reduced API-related crashes by 25% (measured by Sentry network error tracking) by refactoring REST API integrations with Alamofire, centralized error handling, and retry logic"
+      ]
+    },
+    {
+      "role": "Lead Graduate Teaching Assistant - Theory of Computation",
       "company": "Northeastern University",
       "location": "Boston, MA",
       "period": "Sept 2024 - April 2025",
       "description": [
-        "Led Theory of Computation as Lead TA for 200+ students across two semesters along with mentoring junior TAs",
-        "Conducted discussions and streamlined course coordination to improve student engagement"
+        "Led Theory of Computation as Lead TA across two semesters for 200+ graduate students, owning weekly discussion sections, exam-prep resources, and rubric calibration",
+        "Mentored junior TAs on grading consistency, office-hour facilitation, and student communication"
       ]
     },
     {
@@ -28,13 +55,148 @@
       "location": "Bangalore, India",
       "period": "Aug 2022 - Aug 2024",
       "description": [
-        "Fixed EventStreamer migration bugs by rewriting core modules, preventing data loss for 30% of enterprise clients",
-        "Enabled scalable deployments by creating Docker configurations for physical servers, and AWS EC2 instances",
-        "Optimized performance by analyzing code quality through SonarQube and addressing technical debt",
-        "Debugged enterprise Linux servers by analyzing performance metrics, conducting disk usage analysis, and creating shell and Python scripts for workflow automation and resolving critical issues",
-        "Fixed 50+ critical bugs, improving system stability by 20% and preventing potential service outages",
-        "Led cross-team collaborations that increased customer satisfaction scores by 15%"
+        "Improved data pipeline reliability for 30% of enterprise customers (measured by reduced data loss incidents) by designing and iterating on the EventStreamer module with a secure, loss-resistant architecture suitable for regulated environments",
+        "Drove organization-wide adoption of standardized deployment patterns (measured by team onboarding metrics) by designing Docker-based CI/CD pipelines that improved consistency, traceability, and operational compliance",
+        "Reduced average issue resolution time by 50% (measured by internal ticketing metrics) by building developer productivity tools and automating debugging workflows in Python and shell scripting",
+        "Maintained 99.9% uptime during critical production incidents (measured by SLA compliance) by working directly with enterprise clients to debug on-site, deliver hot fixes, and ensure continuity of secure systems"
       ]
     }
-  ]
+  ],
+  "projectsSection": {
+    "title": "Featured Projects",
+    "projects": [
+      {
+        "title": "ProximityLink - BLE Dual-Mode iOS App",
+        "featured": true,
+        "description": "Dual-mode Bluetooth Low Energy iOS app supporting real-time device scanning and beacon broadcasting via CoreBluetooth Central and Peripheral Manager APIs.",
+        "problem": "Apps that work with BLE typically pick one role (scanner or beacon) and one app state (foreground). Real proximity workflows need both roles and survive backgrounding, with UI that stays in sync as the radio reports changes every few hundred milliseconds.",
+        "approach": "Built dual-mode operation against CoreBluetooth's Central and Peripheral APIs with iOS background mode support. Distance is estimated with a log-distance path-loss model and bucketed into user-friendly proximity tiers from RSSI samples. A Combine pipeline streams hardware events directly into SwiftUI views so the list updates without manual refresh, and stale devices are pruned automatically when they stop advertising.",
+        "impact": "Stable scanning and broadcasting across foreground/background transitions, with a reactive UI that needs no refresh logic and graceful handling of Bluetooth permission and state errors.",
+        "nextSteps": "Add CoreLocation iBeacon ranging as a fallback in noisy RF environments, ship as a Swift Package for embedding in other apps, and add an in-app inspector that records and replays BLE traces for debugging on customer devices.",
+        "technologies": ["Swift", "SwiftUI", "CoreBluetooth", "Combine", "MVVM"],
+        "githubUrl": "https://github.com/ShreyansJa1n/ProximityLink",
+        "liveUrl": "#"
+      },
+      {
+        "title": "ShapeTracer - Multimodal iOS Tracing App",
+        "featured": true,
+        "description": "Native iOS app combining Core Haptics, AVFoundation, and custom CoreGraphics rendering in SwiftUI for motor-skill assessment and rehabilitation.",
+        "problem": "Tracing exercises used in motor-skill research typically lack tight, multimodal feedback. To be useful clinically, an iOS app needs to render strokes smoothly, react to stroke deviation in real time across visual / haptic / audio channels, and stay reliable enough to use in a study.",
+        "approach": "Built modular SwiftUI views over custom CoreGraphics rendering, layered Core Haptics and AVFoundation feedback on stroke events, and structured the codebase around SOLID boundaries so each feedback channel can be swapped or A/B tested. Validated the pipelines with XCTest, achieving 90%+ coverage on the rendering and feedback modules.",
+        "impact": "A reliable, testable iOS app that demonstrates advanced system integrations end-to-end and is ready to use as a research instrument.",
+        "nextSteps": "Ship to TestFlight for clinician evaluation, replace polling-based hit detection with Metal-rendered overlays for smoother tracing on older devices, and add a CoreML-based stroke-similarity score so results can be summarised per session.",
+        "technologies": ["Swift", "SwiftUI", "Core Haptics", "AVFoundation", "CoreGraphics", "XCTest"],
+        "githubUrl": "https://github.com/ShreyansJa1n/ShapeTracer",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Stock Market Simulator for iOS",
+        "featured": true,
+        "description": "Production-ready iOS trading simulator with real-time market data, MVVM architecture, and Firebase biometric auth.",
+        "problem": "Beginners learning to trade need a safe, realistic environment with current market data, secure accounts, and a UI that stays usable as positions and watchlists grow.",
+        "approach": "Built an MVVM iOS app pulling real-time data over REST APIs (Alamofire), integrated Firebase auth gated behind Face ID / Touch ID via LocalAuthentication, and structured portfolio state so account, watchlist, and trade flows are independently testable.",
+        "impact": "A secure simulator that supports a complete trade flow end-to-end with real market data and biometric-protected accounts.",
+        "nextSteps": "Migrate the UI layer to SwiftUI + MVVM-C, replace REST polling with WebSocket streams for live tickers, add APNs push notifications for per-symbol alerts, and persist portfolios in Core Data for offline access.",
+        "technologies": ["Swift", "UIKit", "Firebase", "Alamofire", "LocalAuthentication", "REST APIs"],
+        "githubUrl": "https://github.com/ShreyansJa1n/StockMarketSimulator-iOS",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Government ID Scanner for Northeastern Recreation",
+        "description": "Mobile-friendly ID scanner on Google Vision API auto-extracting data into a serverless backend on Cloud Run, deployed across multiple iPads at Northeastern Recreation. Reduced user registration time ~65% and cut operational costs ~70% by replacing manual entry with auto-scaling serverless infrastructure.",
+        "technologies": ["Google Cloud", "Google Vision API", "Cloud Run", "React", "Tailwind", "Firebase"],
+        "githubUrl": "",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Kubernetes Cluster Management with AWS Integration",
+        "description": "DevOps project demonstrating container orchestration and cloud infrastructure management. Full lifecycle deployment from local KIND environments to production-grade AWS EKS with Infrastructure as Code.",
+        "technologies": ["Kubernetes", "Docker", "Helm", "AWS (EKS, ECR, S3, IAM, EC2)", "Terraform", "KIND", "Nginx", "Shell Scripting"],
+        "githubUrl": "https://github.com/ShreyansJa1n/k8s-aws-kind-helm-docker",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Financial Data Streaming Backend",
+        "description": "Event-driven backend for real-time financial data polling, analytics, and streaming. Built on FastAPI, async SQLAlchemy, Kafka, Redis, and PostgreSQL for speed and scalability.",
+        "technologies": ["Python", "FastAPI", "Docker", "PostgreSQL", "SQLAlchemy", "Kafka", "ZooKeeper", "Redis", "Adminer", "REST APIs"],
+        "githubUrl": "https://github.com/ShreyansJa1n/financial-data-streaming-backend",
+        "liveUrl": "#"
+      },
+      {
+        "title": "DataForge - End-to-End Database Analytics Platform",
+        "description": "Data engineering project transforming raw CSV data into a relational database with analytical capabilities. Demonstrates the full data science pipeline from exploration to insights.",
+        "technologies": ["R", "R Markdown", "Data Analysis", "Database Design", "Statistical Computing"],
+        "githubUrl": "https://github.com/ShreyansJa1n/DataForge",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Data Warehouse for Entertainment Distribution Merger",
+        "description": "Data warehousing project simulating a merger between two entertainment distribution companies. Advanced ETL processes, data modeling, and analytical reporting.",
+        "technologies": ["R", "Rmd", "ggplot2", "SQL", "Data Warehousing", "ETL", "Data Modeling", "Reporting"],
+        "githubUrl": "https://github.com/ShreyansJa1n/MediaFusion-Data-Warehouse",
+        "liveUrl": "#"
+      },
+      {
+        "title": "QR-Based Image Upload for Moodle",
+        "description": "Security-focused Moodle plugin enabling secure image uploads through cryptographically-signed QR codes for online exams. Deployed for 1000+ students.",
+        "technologies": ["PHP", "MySQL", "Moodle", "Apache", "Web Development", "Security"],
+        "githubUrl": "https://github.com/ShreyansJa1n/Moodle-QRBasedImageUpload-LocalPlugin",
+        "liveUrl": "#"
+      },
+      {
+        "title": "This Portfolio Website",
+        "description": "This portfolio itself - yes, it made it to my projects section. Built with React, Tailwind, and TypeScript; auto-built and deployed to GitHub Pages via GitHub Actions on every push.",
+        "technologies": ["React", "TypeScript", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
+        "githubUrl": "https://github.com/ShreyansJa1n/shreyansja1n.github.io",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Image Manipulation Software",
+        "description": "Comprehensive image processing application built around extensibility and maintainability. Demonstrates layered architecture, multiple design patterns, and TDD practices. Source code available on request.",
+        "technologies": ["Java", "Java Swing", "Design Patterns", "TDD", "JUnit", "IntelliJ IDEA"],
+        "githubUrl": "",
+        "liveUrl": "#"
+      }
+    ]
+  },
+  "certificationsSection": {
+    "title": "Certifications & Professional Development",
+    "certifications": [
+      {
+        "title": "Kubernetes: Your First Project",
+        "issuer": "LinkedIn Learning",
+        "date": "June 2025",
+        "description": "Hands-on certification focusing on practical Kubernetes deployment and management fundamentals.",
+        "skills": ["Kubernetes", "Container Orchestration", "Cloud Infrastructure"]
+      },
+      {
+        "title": "Learning Kubernetes",
+        "issuer": "LinkedIn Learning",
+        "date": "June 2025",
+        "description": "Comprehensive training covering Kubernetes architecture, deployment strategies, and best practices.",
+        "skills": ["Kubernetes", "DevOps", "Cluster Management"]
+      },
+      {
+        "title": "Rust Essential Training",
+        "issuer": "LinkedIn Learning",
+        "date": "May 2024",
+        "description": "Certification in Rust focusing on performance-critical applications and systems programming.",
+        "skills": ["Rust Programming", "Systems Programming", "Memory Safety"]
+      },
+      {
+        "title": "Understanding and Visualization of Data with Python",
+        "issuer": "Coursera",
+        "date": "August 2019",
+        "description": "Certification in Python-based data analysis and visualization techniques.",
+        "skills": ["Python", "Data Analysis", "Data Visualization", "Statistical Computing"]
+      },
+      {
+        "title": "Flutter Developer",
+        "issuer": "Udemy",
+        "date": "Professional Development",
+        "description": "Training in Flutter framework for building cross-platform mobile applications.",
+        "skills": ["Flutter", "Cross-Platform Development", "Mobile Applications", "Dart"]
+      }
+    ]
+  }
 }

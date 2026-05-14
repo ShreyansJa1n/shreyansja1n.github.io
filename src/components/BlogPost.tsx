@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { ArrowLeft } from "lucide-react";
 
 import { NavBar } from "./NavBar";
+import { ScrollProgressBar } from "./ScrollProgressBar";
 import DarkModeContext from "@/contexts/dark";
 
 export const BlogPost = () => {
   const { slug } = useParams();
   const [content, setContent] = useState("");
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  const [darkMode] = useContext(DarkModeContext);
 
   useEffect(() => {
     import(`../blogs/${slug}.md?raw`).then((mod) => {
@@ -17,34 +19,50 @@ export const BlogPost = () => {
     });
   }, [slug]);
 
-  // Remove frontmatter for rendering
   const mdContent = content.replace(/^---[\s\S]*?---/, "");
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-black' : 'bg-white'}`}>
+    <div className="min-h-screen bg-background text-foreground antialiased">
+      <ScrollProgressBar />
       <NavBar />
-      <section className="py-20 px-6 max-w-3xl mx-auto">
-        <Link to="/blogs" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Blogs</Link>
-        <article
-          className="prose lg:prose-xl max-w-none"
-          style={darkMode ? {
-            ['--tw-prose-body' as any]: '#F1F2F6',
-            ['--tw-prose-headings' as any]: '#AEB8FE',
-            ['--tw-prose-links' as any]: '#2563eb',
-            ['--tw-prose-bold' as any]: '#F1F2F6',
-            ['--tw-prose-counters' as any]: '#F1F2F6',
-            ['--tw-prose-bullets' as any]: '#F1F2F6',
-            ['--tw-prose-quotes' as any]: '#F1F2F6',
-            ['--tw-prose-code' as any]: '#F1F2F6',
-            ['--tw-prose-pre-code' as any]: '#2563eb',
-            ['--tw-prose-pre-bg' as any]: '#f3f4f6',
-            ['--tw-prose-th-borders' as any]: '#2563eb',
-            ['--tw-prose-td-borders' as any]: '#2563eb',
-          } : {}}
-        >
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{mdContent}</ReactMarkdown>
-        </article>
-      </section>
+      <main className="section-y px-6">
+        <div className="max-w-3xl mx-auto">
+          <Link
+            to="/blogs"
+            className="inline-flex items-center text-sm text-[#0071e3] hover:opacity-80 transition-opacity mb-8"
+          >
+            <ArrowLeft className="mr-1.5 h-4 w-4" />
+            Back to writing
+          </Link>
+          <article
+            className="prose lg:prose-xl max-w-none prose-headings:font-semibold prose-headings:tracking-tightish prose-a:text-[#0071e3] prose-a:no-underline hover:prose-a:underline"
+            style={
+              darkMode
+                ? ({
+                    ["--tw-prose-body" as any]: "#a1a1a6",
+                    ["--tw-prose-headings" as any]: "#f5f5f7",
+                    ["--tw-prose-links" as any]: "#0071e3",
+                    ["--tw-prose-bold" as any]: "#f5f5f7",
+                    ["--tw-prose-counters" as any]: "#a1a1a6",
+                    ["--tw-prose-bullets" as any]: "#6e6e73",
+                    ["--tw-prose-quotes" as any]: "#a1a1a6",
+                    ["--tw-prose-code" as any]: "#f5f5f7",
+                    ["--tw-prose-pre-code" as any]: "#f5f5f7",
+                    ["--tw-prose-pre-bg" as any]: "#131316",
+                    ["--tw-prose-th-borders" as any]: "#1d1d1f",
+                    ["--tw-prose-td-borders" as any]: "#1d1d1f",
+                  } as React.CSSProperties)
+                : ({
+                    ["--tw-prose-body" as any]: "#3a3a3c",
+                    ["--tw-prose-headings" as any]: "#1d1d1f",
+                    ["--tw-prose-links" as any]: "#0071e3",
+                  } as React.CSSProperties)
+            }
+          >
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{mdContent}</ReactMarkdown>
+          </article>
+        </div>
+      </main>
     </div>
   );
 };

@@ -1,87 +1,100 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
 @layer base {
   :root {
+    /* iOS-native minimalism - light */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 9% 12%;
+
+    --surface: #ffffff;
+    --surface-raised: #ffffff;
+    --surface-subtle: #fbfbfd;
+
+    --ink: #1d1d1f;
+    --ink-muted: #6e6e73;
+    --ink-subtle: #86868b;
+
+    --hairline: rgba(0, 0, 0, 0.08);
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 9% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 9% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 9% 12%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 211 100% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 211 100% 45%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* iOS-native minimalism - dark */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --surface: #0a0a0c;
+    --surface-raised: #131316;
+    --surface-subtle: #050507;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --ink: #f5f5f7;
+    --ink-muted: #a1a1a6;
+    --ink-subtle: #6e6e73;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --hairline: rgba(255, 255, 255, 0.1);
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --card: 240 6% 6%;
+    --card-foreground: 0 0% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --popover: 240 6% 6%;
+    --popover-foreground: 0 0% 96%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 220 9% 12%;
+
+    --secondary: 240 4% 14%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 240 4% 14%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 4% 14%;
+    --input: 240 4% 14%;
+    --ring: 211 100% 50%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,34 +111,173 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern', 'liga', 'calt';
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(0, 113, 227, 0.18);
+    color: inherit;
   }
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
-    opacity: 0.2;
+@layer components {
+  /* Display headlines, Apple-marketing-style: tighter tracking, optical kerning */
+  .text-display {
+    letter-spacing: -0.022em;
+    line-height: 1.05;
   }
-  50% { 
-    transform: translateY(-20px) rotate(180deg); 
-    opacity: 0.4;
+
+  .text-tightish {
+    letter-spacing: -0.011em;
+  }
+
+  /* Section vertical rhythm */
+  .section-y {
+    @apply py-24 md:py-32;
+  }
+
+  /* Card surface used across the design */
+  .card-surface {
+    background-color: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 1.25rem;
+  }
+
+  .card-surface-raised {
+    background-color: var(--surface-raised);
+    border: 1px solid var(--hairline);
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .card-surface-raised {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Soft gradient hairline used to separate sections */
+  .hairline-gradient {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--hairline), transparent);
+  }
+
+  /* Pills used for tech / coursework tags */
+  .pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    border: 1px solid var(--hairline);
+    color: var(--ink-muted);
+    background-color: var(--surface-subtle);
+  }
+
+  .dark .pill {
+    background-color: var(--surface-raised);
+  }
+
+  .pill-accent {
+    color: #0071e3;
+    background-color: rgba(0, 113, 227, 0.08);
+    border-color: rgba(0, 113, 227, 0.18);
+  }
+
+  .dark .pill-accent {
+    color: #5ea7f5;
+    background-color: rgba(0, 113, 227, 0.15);
+    border-color: rgba(0, 113, 227, 0.32);
+  }
+
+  /* Pill-shaped buttons in Apple style */
+  .btn-pill {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-pill-primary {
+    background-color: #0071e3;
+    color: white;
+  }
+  .btn-pill-primary:hover {
+    background-color: #0077ed;
+    transform: translateY(-1px);
+  }
+
+  .btn-pill-outline {
+    border: 1px solid var(--hairline);
+    color: var(--ink);
+    background-color: transparent;
+  }
+  .btn-pill-outline:hover {
+    background-color: var(--surface-subtle);
+    border-color: var(--ink-subtle);
+  }
+
+  .dark .btn-pill-outline:hover {
+    background-color: var(--surface-raised);
+  }
+
+  /* Eyebrow label used above section headlines */
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.18em];
+    color: #0071e3;
   }
 }
 
-@keyframes fade-in {
-  0% {
+/* Hero mesh-gradient orbs - slowly drifting radial blobs */
+@layer utilities {
+  .mesh-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .reveal {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(24px);
+    transition:
+      opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
   }
-  100% {
+
+  .reveal.in-view {
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .mesh-orb,
+    .animate-drift-a,
+    .animate-drift-b,
+    .animate-drift-c {
+      animation: none !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
+/* Legacy fade-in still used by some shadcn pages */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out;
+  animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }

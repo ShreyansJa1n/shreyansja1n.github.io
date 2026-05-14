@@ -1,34 +1,60 @@
-import React, { useContext } from "react";
-import DarkModeContext from "@/contexts/dark";
 import site from "../site.json";
+import { SectionReveal } from "./SectionReveal";
+
+type Role = {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string[] | string;
+};
 
 export const Experience = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
-  const experience = site.experience || [];
+  const experience = (site as { experience?: Role[] }).experience || [];
 
   return (
-    <section id="experience" className={`py-20 px-6 ${darkMode ? 'bg-black text-gray-200' : 'bg-white text-gray-800'}`}>
-      <div className="max-w-4xl mx-auto">
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Experience</h2>
-        <div className="space-y-8">
-          {experience.map((exp, idx) => (
-            <div key={idx} className={`rounded-xl border ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'} p-6 shadow-sm`}>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                <div className="text-lg font-semibold">{exp.role}</div>
-                <div className="text-sm text-blue-600 font-medium mt-1 md:mt-0">{exp.period}</div>
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                <div className="text-md font-medium text-blue-600">{exp.company}</div>
-                <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'} mt-1 md:mt-0`}>{exp.location}</div>
-              </div>
-              <div className="text-gray-600 dark:text-gray-300 mt-2 text-base">
-                <ul className={`list-disc pl-5 ${darkMode ? 'text-gray-400' : 'text-gray-600'} mt-2 space-y-1`}>
-                  {Array.isArray(exp.description)
-                    ? exp.description.map((point, i) => <li key={i}>{point}</li>)
-                    : <li>{exp.description}</li>}
-                </ul>
-              </div>
-            </div>
+    <section id="experience" className="section-y px-6 bg-[var(--surface-subtle)]">
+      <div className="max-w-5xl mx-auto">
+        <SectionReveal>
+          <span className="eyebrow">Experience</span>
+          <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
+            Where I&rsquo;ve shipped.
+          </h2>
+        </SectionReveal>
+
+        <div className="mt-12 space-y-6">
+          {experience.map((exp, i) => (
+            <SectionReveal key={`${exp.company}-${i}`} delay={i * 100}>
+              <article className="card-surface p-7 md:p-9">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
+                  <h3 className="text-tightish text-xl md:text-2xl font-semibold text-ink dark:text-ink">
+                    {exp.role}
+                  </h3>
+                  <span className="text-sm font-medium text-[#0071e3]">{exp.period}</span>
+                </div>
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-5">
+                  <p className="text-base md:text-lg text-[var(--ink-muted)] font-medium">
+                    {exp.company}
+                  </p>
+                  <p className="text-sm text-[var(--ink-subtle)]">{exp.location}</p>
+                </div>
+                {Array.isArray(exp.description) ? (
+                  <ul className="space-y-3">
+                    {exp.description.map((bullet, j) => (
+                      <li
+                        key={j}
+                        className="text-[15px] md:text-base text-[var(--ink-muted)] leading-relaxed pl-5 relative"
+                      >
+                        <span className="absolute left-0 top-[0.62em] block w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-base text-[var(--ink-muted)]">{exp.description}</p>
+                )}
+              </article>
+            </SectionReveal>
           ))}
         </div>
       </div>

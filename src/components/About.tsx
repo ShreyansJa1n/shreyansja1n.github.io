@@ -1,60 +1,81 @@
-import React from 'react';
-import DarkModeContext from '@/contexts/dark';
-import { useContext } from 'react';
+import { SectionReveal } from "./SectionReveal";
+
+const pillars = [
+  {
+    title: "iOS engineering",
+    body:
+      "Owned end-to-end iOS features at Lose It! for 50M+ users with zero critical incidents across weekly releases. Shipped Deal Center in Swift / SwiftUI / Combine for $100K+ revenue in 10 days; cut API-related crashes 25% via an Alamofire refactor.",
+  },
+  {
+    title: "Backend & enterprise systems",
+    body:
+      "At Trellix, designed the EventStreamer module that improved pipeline reliability for 30% of enterprise customers, and maintained 99.9% uptime during critical incidents by debugging on-site with customers and shipping hot fixes.",
+  },
+  {
+    title: "DevOps & cloud",
+    body:
+      "Drove org-wide adoption of standardized Docker-based CI/CD pipelines at Trellix. Hands-on with AWS, Kubernetes, Terraform, Jenkins, Grafana, and Kafka from production work and graduate projects.",
+  },
+  {
+    title: "Developer productivity",
+    body:
+      "Cut average issue resolution time 50% at Trellix with Python / shell automation, and accelerated release-doc turnaround 60% at Lose It! by building internal AI-assisted tooling for release notes.",
+  },
+];
+
 export const About = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   return (
-    <section id="about" className={`py-20 px-6 ${darkMode ? 'bg-black' : 'bg-white'}`}>
-      <div className="max-w-4xl mx-auto">
-        <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? 'text-white' : 'text-gray-800'}`}>About Me</h2>
-        <div className="space-y-8">
-          <div className="prose prose-lg mx-auto text-gray-600 leading-relaxed">
-            <p className={`text-xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-              I'm a <span className={`font-bold bg-gradient-to-r ${darkMode ? "from-blue-300 to-indigo-400":"from-blue-600 to-indigo-600"} bg-clip-text text-transparent`}>Software Development Engineer</span> and <span className={`font-bold bg-gradient-to-r ${darkMode ? "from-blue-300 to-indigo-400":"from-blue-600 to-indigo-600"} bg-clip-text text-transparent`}>Computer Science Master's student</span> at Northeastern University (4.0 GPA) with 2 years of enterprise experience at Trellix. I'm a relentless problem solver who delivers results across diverse technical domains.
+    <section id="about" className="section-y px-6 bg-[var(--surface-subtle)]">
+      <div className="max-w-5xl mx-auto">
+        <SectionReveal>
+          <span className="eyebrow">About</span>
+          <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
+            iOS &amp; software engineer with a habit
+            <br className="hidden md:block" />
+            of shipping things that move numbers.
+          </h2>
+        </SectionReveal>
+
+        <div className="mt-10 grid md:grid-cols-2 gap-10 md:gap-14">
+          <SectionReveal delay={120}>
+            <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
+              I&rsquo;m finishing an MS in Computer Science at Northeastern University
+              (GPA 3.94, graduating August 2026), with two years of prior enterprise
+              experience at Trellix.
             </p>
-          </div>
-
-          <div className="space-y-6">
-            <h3 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>What I Do</h3>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className={`bg-gradient-to-br ${darkMode ? 'from-gray-600 to-gray-900' : 'from-blue-50 to-indigo-50'} p-6 rounded-xl border ${darkMode ? 'border-blue-950' : 'border-blue-100'}`}>
-                <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Enterprise Software Development</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Architected mission-critical systems at Trellix, resolving bugs affecting 30% of enterprise clients and improving performance by 40%. Built security plugins and optimized data synchronization for thousands of users.</p>
-              </div>
-
-              <div className={`bg-gradient-to-br ${darkMode ? 'from-green-600 to-emerald-900' : 'from-green-50 to-emerald-50'} p-6 rounded-xl border ${darkMode ? 'border-green-950' : 'border-green-100'}`}>
-                <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>DevOps & Cloud Engineering</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Deploy scalable infrastructure using Kubernetes, Docker, and AWS (EKS, ECR, S3, EC2). Expert in Infrastructure as Code and managing production-grade cloud deployments.</p>
-              </div>
-
-              <div className={`bg-gradient-to-br ${darkMode ? 'from-purple-600 to-violet-900' : 'from-purple-50 to-violet-50'} p-6 rounded-xl border ${darkMode ? 'border-purple-950' : 'border-purple-100'}`}>
-                <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Mobile Development</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Built native iOS apps with Swift/UIKit and cross-platform solutions with Flutter. Integrated real-time APIs, biometric authentication, and served 1000+ users.</p>
-              </div>
-
-              <div className={`bg-gradient-to-br ${darkMode ? 'from-orange-600 to-red-900' : 'from-orange-50 to-red-50'} p-6 rounded-xl border ${darkMode ? 'border-orange-950' : 'border-orange-100'}`}>
-                <h4 className={`font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Data Engineering</h4>
-                <p className={`text-gray-600 ${darkMode ? 'text-white' : 'text-gray-600'}`}>Transform raw data into optimized databases and analytics platforms using R, Python, and SQL. Built data warehouses with star schemas and ETL pipelines.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className={`text-2xl font-bold ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>My Approach</h3>
-            <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>
-              I adapt quickly to any technology stack and thrive on challenges others avoid. Whether debugging enterprise systems, architecting cloud infrastructure, or building mobile apps from scratch, I deliver solutions that exceed expectations.
+            <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
+              Most recently I spent fall 2025 as an iOS Co-op at Lose It!, owning
+              end-to-end iOS features that shipped to 50M+ users. The kind of work
+              where a missed crash on a Friday release reaches millions over the
+              weekend. I liked that pressure, and I liked that the fix was measurable.
             </p>
-            <p className={`text-xl font-bold bg-gradient-to-r ${darkMode ? 'from-blue-300 to-blue-400' : 'from-blue-500 to-indigo-500'} bg-clip-text text-transparent text-center`}>
-              Let's build something incredible together.
+          </SectionReveal>
+          <SectionReveal delay={220}>
+            <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
+              Open to roles across iOS, software engineering, and SDE. Comfortable
+              across the stack thanks to graduate coursework and two years of prior
+              backend work at Trellix.
             </p>
-          </div>
+            <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
+              I&rsquo;d rather ship one feature that moves a number than three that
+              don&rsquo;t.
+            </p>
+          </SectionReveal>
+        </div>
 
-          {/* <div className={`bg-gradient-to-r ${darkMode ? 'from-blue-700 to-blue-800' : 'from-blue-100 to-indigo-100'} p-6 rounded-xl border border-blue-200 text-center`}>
-            <p className={`text-gray-700 font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              <span className="font-bold">Available for internships and co-op positions from May 2025 - December 2025</span>
-            </p>
-          </div> */}
+        <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-5">
+          {pillars.map((pillar, i) => (
+            <SectionReveal key={pillar.title} delay={i * 90}>
+              <article className="card-surface p-7 md:p-8 h-full">
+                <h3 className="text-tightish text-xl md:text-2xl font-semibold text-ink dark:text-ink mb-3">
+                  {pillar.title}
+                </h3>
+                <p className="text-[15px] md:text-base text-[var(--ink-muted)] leading-relaxed">
+                  {pillar.body}
+                </p>
+              </article>
+            </SectionReveal>
+          ))}
         </div>
       </div>
     </section>

@@ -1,30 +1,52 @@
 import { Link } from "react-router-dom";
 import blogIndex from "../blogIndex.json";
-import { useContext } from "react";
-import DarkModeContext from "@/contexts/dark";
 import { NavBar } from "./NavBar";
+import { SectionReveal } from "./SectionReveal";
+import { ScrollProgressBar } from "./ScrollProgressBar";
 
 export const BlogList = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const blogs = blogIndex;
   return (
-    <div className={ darkMode ? "dark bg-black min-h-screen" : "bg-white min-h-screen"}>
+    <div className="min-h-screen bg-background text-foreground antialiased">
+      <ScrollProgressBar />
       <NavBar />
-      <section className="py-24 px-6 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-blue-600">Blogs</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {blogs.map((blog) => (
-            <Link key={blog.slug} to={`/blogs/${blog.slug}`} className="block rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white text-gray-800 border border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700">
-              {blog.cover && <img src={blog.cover} alt={blog.title} className="rounded-t-xl w-full h-48 object-cover" />}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-                <p className="text-gray-500 text-sm mb-2">{blog.date}</p>
-                <p className="text-gray-700 dark:text-gray-300">{blog.excerpt}</p>
-              </div>
-            </Link>
-          ))}
+      <main className="section-y px-6">
+        <div className="max-w-5xl mx-auto">
+          <SectionReveal>
+            <span className="eyebrow">Writing</span>
+            <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
+              Long-form notes on what I&rsquo;ve built.
+            </h2>
+          </SectionReveal>
+
+          <div className="mt-12 grid md:grid-cols-2 gap-5">
+            {blogs.map((blog, i) => (
+              <SectionReveal key={blog.slug} delay={i * 100}>
+                <Link to={`/blogs/${blog.slug}`} className="group block h-full">
+                  <article className="card-surface overflow-hidden h-full flex flex-col transition-all duration-500 ease-apple group-hover:-translate-y-1 group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)] dark:group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)]">
+                    {blog.cover && (
+                      <img
+                        src={blog.cover}
+                        alt={blog.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    )}
+                    <div className="p-6 md:p-7 flex-1 flex flex-col">
+                      <h3 className="text-tightish text-lg md:text-xl font-semibold text-ink dark:text-ink mb-2">
+                        {blog.title}
+                      </h3>
+                      <p className="text-xs text-[var(--ink-subtle)] mb-3">{blog.date}</p>
+                      <p className="text-sm text-[var(--ink-muted)] leading-relaxed flex-1">
+                        {blog.excerpt}
+                      </p>
+                    </div>
+                  </article>
+                </Link>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 };
