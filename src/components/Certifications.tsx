@@ -30,7 +30,7 @@ export const Certifications = () => {
                 <h3 className="text-tightish text-lg font-semibold text-ink dark:text-ink mb-2">
                   {cert.title}
                 </h3>
-                <p className="text-sm text-[#0071e3] font-medium mb-3">
+                <p className="text-sm text-[var(--accent-ink)] font-medium mb-3">
                   {cert.issuer} · {cert.date}
                 </p>
                 <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-5 flex-1">

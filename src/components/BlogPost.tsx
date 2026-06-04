@@ -29,19 +29,19 @@ export const BlogPost = () => {
         <div className="max-w-3xl mx-auto">
           <Link
             to="/blogs"
-            className="inline-flex items-center text-sm text-[#0071e3] hover:opacity-80 transition-opacity mb-8"
+            className="inline-flex items-center text-sm text-[var(--accent-ink)] hover:opacity-80 transition-opacity mb-8"
           >
             <ArrowLeft className="mr-1.5 h-4 w-4" />
             Back to writing
           </Link>
           <article
-            className="prose lg:prose-xl max-w-none prose-headings:font-semibold prose-headings:tracking-tightish prose-a:text-[#0071e3] prose-a:no-underline hover:prose-a:underline"
+            className="prose lg:prose-xl max-w-none prose-headings:font-semibold prose-headings:tracking-tightish prose-a:text-[var(--accent-ink)] prose-a:no-underline hover:prose-a:underline"
             style={
               darkMode
                 ? ({
                     ["--tw-prose-body" as any]: "#a1a1a6",
                     ["--tw-prose-headings" as any]: "#f5f5f7",
-                    ["--tw-prose-links" as any]: "#0071e3",
+                    ["--tw-prose-links" as any]: "var(--accent-ink)",
                     ["--tw-prose-bold" as any]: "#f5f5f7",
                     ["--tw-prose-counters" as any]: "#a1a1a6",
                     ["--tw-prose-bullets" as any]: "#6e6e73",
@@ -55,7 +55,7 @@ export const BlogPost = () => {
                 : ({
                     ["--tw-prose-body" as any]: "#3a3a3c",
                     ["--tw-prose-headings" as any]: "#1d1d1f",
-                    ["--tw-prose-links" as any]: "#0071e3",
+                    ["--tw-prose-links" as any]: "var(--accent-ink)",
                   } as React.CSSProperties)
             }
           >

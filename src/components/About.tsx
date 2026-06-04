@@ -17,9 +17,9 @@ const pillars = [
       "Drove org-wide adoption of standardized Docker-based CI/CD pipelines at Trellix. Hands-on with AWS, Kubernetes, Terraform, Jenkins, Grafana, and Kafka from production work and graduate projects.",
   },
   {
-    title: "Developer productivity",
+    title: "AI engineering",
     body:
-      "Cut average issue resolution time 50% at Trellix with Python / shell automation, and accelerated release-doc turnaround 60% at Lose It! by building internal AI-assisted tooling for release notes.",
+      "Built NLQ, an MCP-based natural-language SQL engine that runs against Anthropic, OpenAI, Ollama, and Apple Intelligence on-device. Constrained outputs and sqlglot validation prevent silent hallucination. Graduate coursework in NLP, ML, and Foundations of AI backs the work.",
   },
 ];
 
@@ -52,9 +52,10 @@ export const About = () => {
           </SectionReveal>
           <SectionReveal delay={220}>
             <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
-              Open to roles across iOS, software engineering, and SDE. Comfortable
-              across the stack thanks to graduate coursework and two years of prior
-              backend work at Trellix.
+              Open to roles across iOS, full-stack, backend, and AI. Comfortable across
+              the stack thanks to two years of prior backend work at Trellix, an iOS
+              Co-op at Lose It!, and graduate coursework in NLP, ML, and Foundations
+              of AI.
             </p>
             <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
               I&rsquo;d rather ship one feature that moves a number than three that

@@ -30,7 +30,7 @@ export const Experience = () => {
                   <h3 className="text-tightish text-xl md:text-2xl font-semibold text-ink dark:text-ink">
                     {exp.role}
                   </h3>
-                  <span className="text-sm font-medium text-[#0071e3]">{exp.period}</span>
+                  <span className="text-sm font-medium text-[var(--accent-ink)]">{exp.period}</span>
                 </div>
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-5">
                   <p className="text-base md:text-lg text-[var(--ink-muted)] font-medium">
@@ -45,7 +45,7 @@ export const Experience = () => {
                         key={j}
                         className="text-[15px] md:text-base text-[var(--ink-muted)] leading-relaxed pl-5 relative"
                       >
-                        <span className="absolute left-0 top-[0.62em] block w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+                        <span className="absolute left-0 top-[0.62em] block w-1.5 h-1.5 rounded-full bg-[var(--accent-ink)]" />
                         {bullet}
                       </li>
                     ))}

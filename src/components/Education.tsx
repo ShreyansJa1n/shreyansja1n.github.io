@@ -31,7 +31,7 @@ export const Education = () => {
                   <h3 className="text-tightish text-xl md:text-2xl font-semibold text-ink dark:text-ink">
                     {edu.school}
                   </h3>
-                  <span className="text-sm font-medium text-[#0071e3]">{edu.period}</span>
+                  <span className="text-sm font-medium text-[var(--accent-ink)]">{edu.period}</span>
                 </div>
                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
                   <p className="text-base md:text-lg text-[var(--ink-muted)]">{edu.degree}</p>

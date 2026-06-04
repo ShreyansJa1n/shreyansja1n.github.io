@@ -1,15 +1,65 @@
+import { useEffect, useRef } from "react";
 import { Github, Linkedin, Mail, ArrowDown, FileText } from "lucide-react";
-import { useScrollY } from "@/hooks/useScrollProgress";
+import { useMagnetic } from "@/hooks/useMagnetic";
 
 const headlineWords = ["Hi,", "I'm", "Shreyans."];
 
 export const Hero = () => {
-  const scrollY = useScrollY();
-  const fadeWindow = 700;
-  const t = Math.min(1, scrollY / fadeWindow);
-  const opacity = 1 - t;
-  const translate = t * -60;
-  const orbShift = scrollY * 0.15;
+  const resumeRef = useMagnetic<HTMLAnchorElement>();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const orbWrapRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+
+  // Apply scroll-driven parallax + fade by mutating refs directly. No React
+  // state, so the Hero subtree doesn't re-render on every scroll frame.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let raf = 0;
+    const fadeWindow = 700;
+    const update = () => {
+      raf = 0;
+      const scrollY = window.scrollY || 0;
+      const t = Math.min(1, scrollY / fadeWindow);
+      const opacity = 1 - t;
+      const translate = t * -60;
+      const orbShift = scrollY * 0.15;
+      if (contentRef.current) {
+        contentRef.current.style.opacity = String(opacity);
+        contentRef.current.style.transform = `translate3d(0, ${translate}px, 0)`;
+      }
+      if (orbWrapRef.current) {
+        orbWrapRef.current.style.transform = `translate3d(0, ${orbShift}px, 0)`;
+      }
+      if (scrollIndicatorRef.current) {
+        scrollIndicatorRef.current.style.opacity = String(opacity);
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Pause mesh-orb drift animations when offscreen so the GPU stops
+  // compositing blurred layers we can't see.
+  useEffect(() => {
+    const wrap = orbWrapRef.current;
+    if (!wrap || typeof window === "undefined") return;
+    if (typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        wrap.dataset.orbActive = entry.isIntersecting ? "true" : "false";
+      },
+      { threshold: 0 }
+    );
+    io.observe(wrap);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section
@@ -18,9 +68,10 @@ export const Hero = () => {
     >
       {/* Animated mesh gradient orbs */}
       <div
+        ref={orbWrapRef}
         aria-hidden
+        data-orb-active="true"
         className="absolute inset-0 -z-10"
-        style={{ transform: `translate3d(0, ${orbShift}px, 0)` }}
       >
         <div
           className="mesh-orb animate-drift-a"
@@ -32,7 +83,7 @@ export const Hero = () => {
             maxWidth: "780px",
             maxHeight: "780px",
             background:
-              "radial-gradient(circle at center, rgba(0, 113, 227, 0.42), rgba(0, 113, 227, 0) 70%)",
+              "radial-gradient(circle at center, rgba(107, 123, 63, 0.42), rgba(107, 123, 63, 0) 70%)",
           }}
         />
         <div
@@ -45,7 +96,7 @@ export const Hero = () => {
             maxWidth: "720px",
             maxHeight: "720px",
             background:
-              "radial-gradient(circle at center, rgba(120, 80, 240, 0.32), rgba(120, 80, 240, 0) 70%)",
+              "radial-gradient(circle at center, rgba(186, 152, 78, 0.32), rgba(186, 152, 78, 0) 70%)",
           }}
         />
         <div
@@ -58,7 +109,7 @@ export const Hero = () => {
             maxWidth: "820px",
             maxHeight: "820px",
             background:
-              "radial-gradient(circle at center, rgba(94, 167, 245, 0.28), rgba(94, 167, 245, 0) 70%)",
+              "radial-gradient(circle at center, rgba(140, 160, 95, 0.28), rgba(140, 160, 95, 0) 70%)",
           }}
         />
         {/* Soft top-to-bottom wash to keep text legible */}
@@ -66,12 +117,8 @@ export const Hero = () => {
       </div>
 
       <div
-        className="relative max-w-5xl mx-auto text-center"
-        style={{
-          opacity,
-          transform: `translate3d(0, ${translate}px, 0)`,
-          willChange: "transform, opacity",
-        }}
+        ref={contentRef}
+        className="relative max-w-5xl mx-auto text-center will-change-transform"
       >
         <div className="mb-6 animate-fade-in">
           <span className="eyebrow">Available from September 2026</span>
@@ -94,7 +141,7 @@ export const Hero = () => {
           style={{ animationDelay: "560ms", animationFillMode: "both" }}
         >
           Most recently shipped iOS to{" "}
-          <span className="text-[#0071e3]">50M+ users</span> at Lose It!.
+          <span className="text-[var(--accent-ink)]">50M+ users</span> at Lose It!.
         </p>
 
         <p
@@ -102,7 +149,7 @@ export const Hero = () => {
           style={{ animationDelay: "720ms", animationFillMode: "both" }}
         >
           MS Computer Science at Northeastern, graduating August 2026. Available
-          full-time from September 2026 for iOS, software engineering, and SDE roles.
+          full-time from September 2026 for iOS, full-stack, backend, and AI roles.
         </p>
 
         <div
@@ -110,6 +157,8 @@ export const Hero = () => {
           style={{ animationDelay: "860ms", animationFillMode: "both" }}
         >
           <a
+            ref={resumeRef}
+            data-magnetic
             href="ShreyansResume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -151,8 +200,9 @@ export const Hero = () => {
 
       {/* Scroll indicator */}
       <div
+        ref={scrollIndicatorRef}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--ink-subtle)] animate-fade-in"
-        style={{ animationDelay: "1100ms", animationFillMode: "both", opacity }}
+        style={{ animationDelay: "1100ms", animationFillMode: "both" }}
       >
         <span className="text-[11px] font-medium uppercase tracking-[0.22em]">Scroll</span>
         <ArrowDown className="h-3.5 w-3.5 animate-bounce" />

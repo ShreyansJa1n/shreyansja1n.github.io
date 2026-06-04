@@ -1,11 +1,32 @@
+import { useEffect, useRef } from "react";
 import { Mail, Linkedin, Github, FileText, ArrowRight } from "lucide-react";
 import { SectionReveal } from "./SectionReveal";
+import { useMagnetic } from "@/hooks/useMagnetic";
 
 export const Contact = () => {
+  const emailRef = useMagnetic<HTMLAnchorElement>();
+  const orbWrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wrap = orbWrapRef.current;
+    if (!wrap || typeof window === "undefined") return;
+    if (typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        wrap.dataset.orbActive = entry.isIntersecting ? "true" : "false";
+      },
+      { threshold: 0 }
+    );
+    io.observe(wrap);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section id="contact" className="relative section-y px-6 bg-background overflow-hidden">
       <div
+        ref={orbWrapRef}
         aria-hidden
+        data-orb-active="true"
         className="absolute inset-0 -z-10 pointer-events-none"
       >
         <div
@@ -18,7 +39,7 @@ export const Contact = () => {
             maxWidth: "720px",
             maxHeight: "720px",
             background:
-              "radial-gradient(circle at center, rgba(0, 113, 227, 0.25), rgba(0, 113, 227, 0) 70%)",
+              "radial-gradient(circle at center, rgba(107, 123, 63, 0.28), rgba(107, 123, 63, 0) 70%)",
           }}
         />
         <div
@@ -31,7 +52,7 @@ export const Contact = () => {
             maxWidth: "640px",
             maxHeight: "640px",
             background:
-              "radial-gradient(circle at center, rgba(120, 80, 240, 0.2), rgba(120, 80, 240, 0) 70%)",
+              "radial-gradient(circle at center, rgba(186, 152, 78, 0.22), rgba(186, 152, 78, 0) 70%)",
           }}
         />
       </div>
@@ -41,11 +62,11 @@ export const Contact = () => {
           <span className="eyebrow">Let&rsquo;s connect</span>
           <h2 className="text-display mt-3 text-3xl md:text-6xl font-semibold text-ink dark:text-ink">
             Building something
-            <br className="hidden md:block" /> that needs an iOS engineer?
+            <br className="hidden md:block" /> that needs an engineer?
           </h2>
           <p className="mt-6 text-base md:text-lg text-[var(--ink-muted)] max-w-2xl mx-auto leading-relaxed">
-            Available full-time from September 2026 for iOS, software engineering, and
-            SDE roles, after graduating Northeastern MSCS in August 2026. Reach out and
+            Available full-time from September 2026 for iOS, full-stack, backend, and
+            AI roles, after graduating Northeastern MSCS in August 2026. Reach out and
             I&rsquo;ll respond fast.
           </p>
         </SectionReveal>
@@ -53,6 +74,8 @@ export const Contact = () => {
         <SectionReveal delay={150}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
+              ref={emailRef}
+              data-magnetic
               href="mailto:shreyansjain.work@gmail.com?subject=iOS%20%2F%20Software%20Engineer%20Role"
               className="btn-pill btn-pill-primary"
             >

@@ -39,7 +39,7 @@ export const Blogs = () => {
                   <p className="text-[15px] md:text-base text-[var(--ink-muted)] leading-relaxed flex-1">
                     {blog.description}
                   </p>
-                  <span className="mt-6 inline-flex items-center text-sm font-medium text-[#0071e3]">
+                  <span className="mt-6 inline-flex items-center text-sm font-medium text-[var(--accent-ink)]">
                     Read the post
                     <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>

@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { BlogList } from "@/components/BlogList";
 import { BlogPost } from "@/components/BlogPost";
+import { CommandPalette } from "@/components/CommandPalette";
+import { CursorDot } from "@/components/CursorDot";
 import DarkModeContext from "@/contexts/dark";
 import { useEffect, useState } from "react";
 
@@ -15,10 +17,7 @@ const queryClient = new QueryClient();
 const App = () => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
-    const stored = window.localStorage.getItem("theme");
-    if (stored === "dark") return true;
-    if (stored === "light") return false;
-    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+    return window.localStorage.getItem("theme") === "dark";
   });
 
   useEffect(() => {
@@ -41,7 +40,9 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
+          <CursorDot />
           <BrowserRouter>
+            <CommandPalette />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/blogs" element={<BlogList />} />

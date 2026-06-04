@@ -1,20 +1,36 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import DarkModeContext from "@/contexts/dark";
-import { Sun, Moon } from "lucide-react";
-import { useScrollY } from "@/hooks/useScrollProgress";
+import { Sun, Moon, Search } from "lucide-react";
 
 export const NavBar = () => {
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
-  const scrollY = useScrollY();
-  const scrolled = scrollY > 8;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setScrolled(window.scrollY > 8);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-apple-quick ${
         scrolled
-          ? "backdrop-blur-2xl bg-white/70 dark:bg-black/60 border-b border-[color:var(--hairline)]"
-          : "backdrop-blur-md bg-white/30 dark:bg-black/20 border-b border-transparent"
+          ? "backdrop-blur-xl bg-white/80 dark:bg-black/70 border-b border-[color:var(--hairline)]"
+          : "backdrop-blur-md bg-white/40 dark:bg-black/30 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-12 md:h-14 flex items-center justify-between">
@@ -25,24 +41,16 @@ export const NavBar = () => {
           Shreyans Jain
         </Link>
         <div className="flex items-center gap-1 md:gap-2">
-          <a
-            href="/#for-recruiters"
-            className="hidden md:inline-block text-[13px] font-medium px-3 py-1.5 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-subtle)] dark:hover:bg-white/5 transition-colors"
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("palette:open"))}
+            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--hairline)] text-[12px] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-subtle)] dark:hover:bg-white/5 transition-colors"
+            aria-label="Open command palette"
           >
-            For recruiters
-          </a>
-          <a
-            href="/#projects"
-            className="hidden md:inline-block text-[13px] font-medium px-3 py-1.5 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-subtle)] dark:hover:bg-white/5 transition-colors"
-          >
-            Projects
-          </a>
-          <a
-            href="/#experience"
-            className="hidden md:inline-block text-[13px] font-medium px-3 py-1.5 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-subtle)] dark:hover:bg-white/5 transition-colors"
-          >
-            Experience
-          </a>
+            <Search className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">Search</span>
+            <kbd className="font-sans text-[10.5px] tracking-wider opacity-70">⌘K</kbd>
+          </button>
           <Link
             to="/blogs"
             className="text-[13px] font-medium px-3 py-1.5 rounded-full text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-subtle)] dark:hover:bg-white/5 transition-colors"

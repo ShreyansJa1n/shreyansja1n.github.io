@@ -76,7 +76,7 @@ const CaseStudy = ({ project, delay }: { project: Project; delay: number }) => {
 
 const CaseStudyField = ({ label, body }: { label: string; body: string }) => (
   <div>
-    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0071e3] mb-2">
+    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent-ink)] mb-2">
       {label}
     </p>
     <p className="text-[15px] md:text-base text-[var(--ink-muted)] leading-relaxed">{body}</p>
@@ -130,7 +130,7 @@ export const Projects = () => {
         <SectionReveal>
           <span className="eyebrow">Projects</span>
           <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
-            Featured iOS case studies,
+            Featured case studies,
             <br className="hidden md:block" />
             then the rest of the work.
           </h2>

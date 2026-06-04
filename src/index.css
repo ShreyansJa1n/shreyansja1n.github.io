@@ -4,19 +4,23 @@
 
 @layer base {
   :root {
-    /* iOS-native minimalism - light */
+    /* iOS-native minimalism - light (olive accent) */
     --background: 0 0% 100%;
     --foreground: 220 9% 12%;
 
     --surface: #ffffff;
     --surface-raised: #ffffff;
-    --surface-subtle: #fbfbfd;
+    --surface-subtle: #faf8f2;
 
     --ink: #1d1d1f;
     --ink-muted: #6e6e73;
     --ink-subtle: #86868b;
 
     --hairline: rgba(0, 0, 0, 0.08);
+
+    --accent-ink: #6B7B3F;
+    --accent-soft: rgba(107, 123, 63, 0.08);
+    --accent-border: rgba(107, 123, 63, 0.18);
 
     --card: 0 0% 100%;
     --card-foreground: 220 9% 12%;
@@ -33,7 +37,7 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 45%;
 
-    --accent: 211 100% 45%;
+    --accent: 75 33% 36%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,7 +45,7 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 211 100% 45%;
+    --ring: 75 33% 36%;
 
     --radius: 1rem;
 
@@ -56,44 +60,48 @@
   }
 
   .dark {
-    /* iOS-native minimalism - dark */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 96%;
+    /* iOS-native minimalism - dark (warm olive-tinted) */
+    --background: 78 9% 6%;
+    --foreground: 60 8% 95%;
 
-    --surface: #0a0a0c;
-    --surface-raised: #131316;
-    --surface-subtle: #050507;
+    --surface: #15190E;
+    --surface-raised: #1C2113;
+    --surface-subtle: #0A0C06;
 
-    --ink: #f5f5f7;
-    --ink-muted: #a1a1a6;
-    --ink-subtle: #6e6e73;
+    --ink: #F2F1EA;
+    --ink-muted: #A6A59C;
+    --ink-subtle: #74736A;
 
-    --hairline: rgba(255, 255, 255, 0.1);
+    --hairline: rgba(240, 234, 210, 0.10);
 
-    --card: 240 6% 6%;
-    --card-foreground: 0 0% 96%;
+    --accent-ink: #C2D38A;
+    --accent-soft: rgba(194, 211, 138, 0.13);
+    --accent-border: rgba(194, 211, 138, 0.30);
 
-    --popover: 240 6% 6%;
-    --popover-foreground: 0 0% 96%;
+    --card: 78 9% 7%;
+    --card-foreground: 60 8% 95%;
 
-    --primary: 0 0% 96%;
-    --primary-foreground: 220 9% 12%;
+    --popover: 78 12% 8%;
+    --popover-foreground: 60 8% 95%;
 
-    --secondary: 240 4% 14%;
-    --secondary-foreground: 0 0% 96%;
+    --primary: 60 8% 95%;
+    --primary-foreground: 78 12% 8%;
 
-    --muted: 240 4% 14%;
-    --muted-foreground: 240 5% 65%;
+    --secondary: 75 8% 14%;
+    --secondary-foreground: 60 8% 95%;
 
-    --accent: 211 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 75 8% 14%;
+    --muted-foreground: 70 5% 65%;
+
+    --accent: 71 40% 64%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 240 4% 14%;
     --input: 240 4% 14%;
-    --ring: 211 100% 50%;
+    --ring: 71 40% 64%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -126,7 +134,11 @@
   }
 
   ::selection {
-    background-color: rgba(0, 113, 227, 0.18);
+    background-color: rgba(107, 123, 63, 0.22);
+    color: inherit;
+  }
+  .dark ::selection {
+    background-color: rgba(184, 201, 127, 0.28);
     color: inherit;
   }
 }
@@ -184,15 +196,15 @@
   }
 
   .pill-accent {
-    color: #0071e3;
-    background-color: rgba(0, 113, 227, 0.08);
-    border-color: rgba(0, 113, 227, 0.18);
+    color: var(--accent-ink);
+    background-color: var(--accent-soft);
+    border-color: var(--accent-border);
   }
 
   .dark .pill-accent {
-    color: #5ea7f5;
-    background-color: rgba(0, 113, 227, 0.15);
-    border-color: rgba(0, 113, 227, 0.32);
+    color: var(--accent-ink);
+    background-color: var(--accent-soft);
+    border-color: var(--accent-border);
   }
 
   /* Pill-shaped buttons in Apple style */
@@ -202,12 +214,19 @@
   }
 
   .btn-pill-primary {
-    background-color: #0071e3;
+    background-color: #6B7B3F;
     color: white;
   }
   .btn-pill-primary:hover {
-    background-color: #0077ed;
+    background-color: #7A8B47;
     transform: translateY(-1px);
+  }
+  .dark .btn-pill-primary {
+    background-color: #9CAE5E;
+    color: #0A0C06;
+  }
+  .dark .btn-pill-primary:hover {
+    background-color: #AFC172;
   }
 
   .btn-pill-outline {
@@ -227,7 +246,7 @@
   /* Eyebrow label used above section headlines */
   .eyebrow {
     @apply inline-block text-xs font-semibold uppercase tracking-[0.18em];
-    color: #0071e3;
+    color: var(--accent-ink);
   }
 }
 
@@ -236,9 +255,17 @@
   .mesh-orb {
     position: absolute;
     border-radius: 9999px;
-    filter: blur(64px);
+    filter: blur(40px);
     will-change: transform;
     pointer-events: none;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    contain: layout paint;
+  }
+
+  /* Pause the orb keyframes when their container is offscreen. */
+  [data-orb-active="false"] .mesh-orb {
+    animation-play-state: paused;
   }
 
   .reveal {
