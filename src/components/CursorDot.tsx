@@ -1,9 +1,19 @@
 import { useEffect, useRef } from "react";
 
+const HOVER_SELECTOR = 'a, button, [role="button"], [data-magnetic]';
+const EXCLUDE_INSIDE = "[cmdk-root]";
+
 /**
- * Cursor follower dot. Position via rAF-throttled pointermove; hover state via
- * pointerover/pointerout event delegation (fires on element transitions, not
- * every move). Disabled on touch / reduced-motion / coarse pointer.
+ * Cursor follower. In default ("dot") mode it tracks the pointer as a small
+ * filled circle. On hover over an interactive element, it shapeshifts into
+ * a transparent outlined frame of the same size and border-radius as that
+ * element, anchored to its center.
+ *
+ * Position updates via pointermove (rAF-throttled). Hover transitions via
+ * pointerover/pointerout delegation so the closest() walk only runs on
+ * element-boundary changes, not every pixel of motion.
+ *
+ * Disabled on touch / coarse pointer / reduced-motion.
  */
 export const CursorDot = () => {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -17,19 +27,30 @@ export const CursorDot = () => {
     const dot = dotRef.current;
     if (!dot) return;
     dot.style.opacity = "0";
-
-    const HOVER_SELECTOR =
-      'a, button, [role="button"], input, textarea, select, [data-magnetic], [cmdk-item]';
+    dot.dataset.mode = "dot";
 
     let raf = 0;
     let pendingX = 0;
     let pendingY = 0;
     let firstMove = true;
-    let hover = false;
+    let hoveredEl: Element | null = null;
 
-    const applyPosition = () => {
+    const update = () => {
       raf = 0;
-      dot.style.transform = `translate3d(${pendingX}px, ${pendingY}px, 0)`;
+      if (hoveredEl) {
+        // Re-read rect so the wrap tracks magnetic-offset movement of the
+        // hovered button. Sub-millisecond layout read.
+        const r = hoveredEl.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const w = Math.round(r.width);
+        const h = Math.round(r.height);
+        if (dot.style.width !== `${w}px`) dot.style.width = `${w}px`;
+        if (dot.style.height !== `${h}px`) dot.style.height = `${h}px`;
+        dot.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
+      } else {
+        dot.style.transform = `translate3d(${pendingX}px, ${pendingY}px, 0) translate(-50%, -50%)`;
+      }
     };
 
     const onMove = (e: PointerEvent) => {
@@ -39,29 +60,48 @@ export const CursorDot = () => {
         firstMove = false;
         dot.style.opacity = "1";
       }
-      if (!raf) raf = requestAnimationFrame(applyPosition);
+      if (!raf) raf = requestAnimationFrame(update);
     };
 
-    const setHover = (next: boolean) => {
-      if (hover === next) return;
-      hover = next;
-      dot.dataset.hover = next ? "true" : "false";
+    const wrapTo = (el: Element) => {
+      if (hoveredEl === el) return;
+      hoveredEl = el;
+      const styles = window.getComputedStyle(el);
+      dot.style.borderRadius = styles.borderRadius;
+      dot.dataset.mode = "wrap";
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    const unwrap = () => {
+      hoveredEl = null;
+      dot.dataset.mode = "dot";
+      // Clear inline sizing so the .cursor-dot CSS defaults kick back in
+      // and the shape transitions back to a small filled circle.
+      dot.style.width = "";
+      dot.style.height = "";
+      dot.style.borderRadius = "";
+      if (!raf) raf = requestAnimationFrame(update);
     };
 
     const onOver = (e: PointerEvent) => {
       const target = e.target as Element | null;
-      if (target && target.closest(HOVER_SELECTOR)) {
-        setHover(true);
-      }
+      if (!target) return;
+      const wrapEl = target.closest(HOVER_SELECTOR);
+      if (!wrapEl) return;
+      if (wrapEl.closest(EXCLUDE_INSIDE)) return;
+      wrapTo(wrapEl);
     };
 
     const onOut = (e: PointerEvent) => {
       const target = e.target as Element | null;
-      if (!target || !target.closest(HOVER_SELECTOR)) return;
+      const fromEl = target?.closest(HOVER_SELECTOR);
+      if (!fromEl || fromEl !== hoveredEl) return;
       const related = e.relatedTarget as Element | null;
-      if (!related || !related.closest(HOVER_SELECTOR)) {
-        setHover(false);
-      }
+      const toEl = related?.closest(HOVER_SELECTOR);
+      // If moving directly to another wrap target (not inside the palette),
+      // let onOver handle the switch — don't flicker through dot mode.
+      if (toEl && !toEl.closest(EXCLUDE_INSIDE)) return;
+      unwrap();
     };
 
     const onPageLeave = () => {
@@ -87,12 +127,5 @@ export const CursorDot = () => {
     };
   }, []);
 
-  return (
-    <div
-      ref={dotRef}
-      aria-hidden
-      className="fixed top-0 left-0 z-[100] pointer-events-none w-2 h-2 -ml-1 -mt-1 rounded-full bg-ink dark:bg-ink transition-[width,height,margin,background-color,opacity] duration-300 ease-apple data-[hover=true]:w-9 data-[hover=true]:h-9 data-[hover=true]:-ml-[18px] data-[hover=true]:-mt-[18px] data-[hover=true]:bg-ink/20 dark:data-[hover=true]:bg-ink/20 will-change-transform"
-      style={{ opacity: 0 }}
-    />
-  );
+  return <div ref={dotRef} aria-hidden className="cursor-dot" style={{ opacity: 0 }} />;
 };
