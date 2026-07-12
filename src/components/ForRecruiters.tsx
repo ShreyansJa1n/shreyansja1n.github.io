@@ -13,12 +13,12 @@ export const ForRecruiters = () => {
               <div className="md:max-w-2xl">
                 <span className="eyebrow">For recruiters</span>
                 <h3 className="text-display mt-3 mb-6 text-3xl md:text-4xl font-semibold text-ink dark:text-ink">
-                  Available for iOS, full-stack, backend, and AI roles.
+                  Available for iOS, full-stack, backend, AI, and forward deployed roles.
                 </h3>
                 <dl className="space-y-3 text-base md:text-lg text-[var(--ink-muted)]">
                   <div className="flex flex-col sm:flex-row sm:gap-3">
                     <dt className="font-semibold text-ink dark:text-ink sm:w-32 shrink-0">Target roles</dt>
-                    <dd>iOS engineer, full-stack / software engineer, backend engineer, and AI engineer (SDE I / II, 0–2 YoE). Open to new-grad through SDE II.</dd>
+                    <dd>iOS engineer, full-stack / software engineer, backend engineer, AI engineer, and forward deployed / implementation engineer (SDE I / II, 0–2 YoE). Open to new-grad through SDE II.</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-3">
                     <dt className="font-semibold text-ink dark:text-ink sm:w-32 shrink-0">Start date</dt>
@@ -27,6 +27,10 @@ export const ForRecruiters = () => {
                   <div className="flex flex-col sm:flex-row sm:gap-3">
                     <dt className="font-semibold text-ink dark:text-ink sm:w-32 shrink-0">Most recent</dt>
                     <dd>iOS Co-op at Lose It! (Sept – Dec 2025), shipping consumer iOS to 50M+ users</dd>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:gap-3">
+                    <dt className="font-semibold text-ink dark:text-ink sm:w-32 shrink-0">FDE background</dt>
+                    <dd>Two years debugging enterprise production systems on-site at Trellix (HX endpoint security): live hot fixes in C++ and Python, MySQL root cause tracing, and 99.9% uptime SLA ownership across distributed environments.</dd>
                   </div>
                 </dl>
               </div>

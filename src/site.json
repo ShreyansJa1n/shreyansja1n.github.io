@@ -55,10 +55,10 @@
       "location": "Bangalore, India",
       "period": "Aug 2022 - Aug 2024",
       "description": [
+        "Maintained 99.9% uptime during critical production incidents by debugging enterprise systems on-site for clients, delivering hot fixes in C++ and Python, and querying MySQL databases to trace root causes under live production conditions",
         "Improved data pipeline reliability for 30% of enterprise customers (measured by reduced data loss incidents) by designing and iterating on the EventStreamer module with a secure, loss-resistant architecture suitable for regulated environments",
-        "Drove organization-wide adoption of standardized deployment patterns (measured by team onboarding metrics) by designing Docker-based CI/CD pipelines that improved consistency, traceability, and operational compliance",
-        "Reduced average issue resolution time by 50% (measured by internal ticketing metrics) by building developer productivity tools and automating debugging workflows in Python and shell scripting",
-        "Maintained 99.9% uptime during critical production incidents (measured by SLA compliance) by working directly with enterprise clients to debug on-site, deliver hot fixes, and ensure continuity of secure systems"
+        "Reduced average issue resolution time by 50% (measured by internal ticketing metrics) by building Python and shell automation for hotfix deployment, log parsing, and triage workflows, cutting manual steps in the support-to-engineering escalation loop",
+        "Drove organization-wide adoption of standardized deployment patterns (measured by team onboarding metrics) by containerizing HX platform microservices with Docker and Compose, resolving x86-to-ARM64 compatibility issues for the team's laptop migration"
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "description": "Ask any SQLite database questions in plain English, privately and locally. Runs on top of Anthropic, OpenAI, Ollama, vLLM, or Apple Intelligence on-device, is read-only by default, and ships as a CLI, a Streamlit playground, and a Model Context Protocol server so Claude Desktop can query the database directly.",
         "problem": "NL to SQL tools either silently hallucinate when they don't know an answer, demand you ship your schema to a third party, or lock you to one model vendor. None of those is acceptable when the database holds real data and you want on-device privacy.",
         "approach": "Built a provider-agnostic NL to SQL pipeline behind a single LLMProvider protocol so Anthropic, OpenAI, Ollama, vLLM, and Apple Intelligence are one config flag apart. Every generation is constrained to one of three states (ANSWER with SQL, CANNOT_ANSWER with reason, or CLARIFY with a follow-up question), validated with sqlglot, and auto-limited on unbounded reads. Read-only is the default; writes need an explicit flag. The same engine ships as a CLI, a Streamlit playground, and an MCP stdio server with a lazy-schema tool-calling mode that falls back to schema injection when the model can't use tools.",
-        "impact": "Zero silent hallucinations across a 35-question eval harness covering all three response states, with 164 unit tests running in roughly one second. Runs fully offline against Apple Intelligence or Ollama for private queries, and against frontier models when accuracy matters.",
+        "impact": "Zero silent hallucinations across a 35-question eval harness covering all three response states, with 164 unit tests running in roughly one second. Ships as a CLI, Streamlit playground, and MCP server, demo-ready against any SQLite database with a single command.",
         "nextSteps": "PostgreSQL and MySQL adapters via the existing SchemaExtractor protocol slot, an optional NL result summarizer, and a multi-connection config manager so one binary can route across several databases.",
         "technologies": ["Python", "MCP", "Anthropic Claude", "OpenAI GPT", "Ollama", "sqlglot", "SQLite", "Streamlit", "pytest"],
         "githubUrl": "https://github.com/ShreyansJa1n/nl-db",

@@ -12,6 +12,11 @@ const pillars = [
       "At Trellix, designed the EventStreamer module that improved pipeline reliability for 30% of enterprise customers, and maintained 99.9% uptime during critical incidents by debugging on-site with customers and shipping hot fixes.",
   },
   {
+    title: "On-site & field engineering",
+    body:
+      "At Trellix, spent two years debugging enterprise production systems on-site for clients running HX endpoint security in cloud, on-prem, and DMZ environments. Owned root cause analysis under SLA pressure: live hot fixes in C++ and Python, MySQL query tracing, and maintaining 99.9% uptime. The kind of work where you don't get to say it's a known issue.",
+  },
+  {
     title: "DevOps & cloud",
     body:
       "Drove org-wide adoption of standardized Docker-based CI/CD pipelines at Trellix. Hands-on with AWS, Kubernetes, Terraform, Jenkins, Grafana, and Kafka from production work and graduate projects.",
@@ -30,9 +35,9 @@ export const About = () => {
         <SectionReveal>
           <span className="eyebrow">About</span>
           <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
-            iOS &amp; software engineer with a habit
+            iOS &amp; software engineer who ships in production,
             <br className="hidden md:block" />
-            of shipping things that move numbers.
+            for teams and for customers.
           </h2>
         </SectionReveal>
 
@@ -52,10 +57,10 @@ export const About = () => {
           </SectionReveal>
           <SectionReveal delay={220}>
             <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
-              Open to roles across iOS, full-stack, backend, and AI. Comfortable across
-              the stack thanks to two years of prior backend work at Trellix, an iOS
-              Co-op at Lose It!, and graduate coursework in NLP, ML, and Foundations
-              of AI.
+              Open to roles across iOS, full-stack, backend, AI, and forward deployed /
+              customer engineering. Comfortable at the customer site thanks to two
+              years of enterprise incident work at Trellix, an iOS Co-op at Lose It!,
+              and graduate coursework in NLP, ML, and Foundations of AI.
             </p>
             <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
               I&rsquo;d rather ship one feature that moves a number than three that
@@ -66,7 +71,11 @@ export const About = () => {
 
         <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-5">
           {pillars.map((pillar, i) => (
-            <SectionReveal key={pillar.title} delay={i * 90}>
+            <SectionReveal
+              key={pillar.title}
+              delay={i * 90}
+              className={i === pillars.length - 1 ? "md:col-span-2" : undefined}
+            >
               <article className="card-surface p-7 md:p-8 h-full">
                 <h3 className="text-tightish text-xl md:text-2xl font-semibold text-ink dark:text-ink mb-3">
                   {pillar.title}

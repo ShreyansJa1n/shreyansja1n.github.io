@@ -1,4 +1,4 @@
-import { Smartphone, Brain, Code, Server, Cloud, Database, Sparkles } from "lucide-react";
+import { Smartphone, Brain, Code, Server, Cloud, Database, Sparkles, Wrench } from "lucide-react";
 import { SectionReveal } from "./SectionReveal";
 
 const skillCategories = [
@@ -86,6 +86,20 @@ const skillCategories = [
       "SonarQube",
     ],
   },
+  {
+    title: "Enterprise & Field Engineering",
+    icon: Wrench,
+    skills: [
+      "On-site debugging",
+      "Root cause analysis",
+      "Distributed systems triage",
+      "Live hotfix delivery",
+      "Log analysis",
+      "MySQL query tracing",
+      "Enterprise environments",
+      "Incident response",
+    ],
+  },
 ];
 
 const currentlyDeepening = [
@@ -93,6 +107,7 @@ const currentlyDeepening = [
   "SwiftData",
   "MCP & agentic workflows",
   "Local LLM deployment",
+  "Enterprise deployment patterns",
 ];
 
 export const Skills = () => {

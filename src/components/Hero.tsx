@@ -149,7 +149,8 @@ export const Hero = () => {
           style={{ animationDelay: "720ms", animationFillMode: "both" }}
         >
           MS Computer Science at Northeastern, graduating August 2026. Available
-          full-time from September 2026 for iOS, full-stack, backend, and AI roles.
+          full-time from September 2026 for iOS, full-stack, backend, AI, and
+          forward deployed roles.
         </p>
 
         <div
