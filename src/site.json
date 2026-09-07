@@ -74,7 +74,7 @@
         "impact": "Zero silent hallucinations across a 35-question eval harness covering all three response states, with 190 unit tests running in roughly one second. An opt-in RAG few-shot mode retrieves similar examples from a self-hosted ChromaDB corpus instead of static examples, gated behind an eval comparison before it can become the default, and optional Arize Phoenix observability (OpenTelemetry and OpenInference instrumentation) is available off by default, with tracing failures caught so they never break a query. Ships as a CLI, Streamlit playground, and MCP server, demo-ready against any SQLite database with a single command.",
         "nextSteps": "PostgreSQL and MySQL adapters via the existing SchemaExtractor protocol slot, an optional NL result summarizer, a multi-connection config manager so one binary can route across several databases, and promoting the RAG example selector to the default once its eval-gating comparison run is complete.",
         "technologies": ["Python", "MCP", "Anthropic Claude", "OpenAI GPT", "Ollama", "sqlglot", "SQLite", "Streamlit", "pytest"],
-        "githubUrl": "https://github.com/ShreyansJa1n/nl-db",
+        "githubUrl": "https://github.com/ShreyansJa1n/NLQ",
         "liveUrl": "#"
       },
       {
