@@ -31,7 +31,7 @@ const StatTile = ({ tile, delay }: { tile: Tile; delay: number }) => {
         transitionDelay: `${delay}ms`,
       }}
     >
-      <div className="text-display text-5xl md:text-6xl font-semibold text-ink dark:text-ink tabular-nums">
+      <div className="text-display font-mono text-5xl md:text-6xl font-semibold text-ink dark:text-ink tabular-nums">
         {tile.prefix}
         {display}
         {tile.suffix}

@@ -135,7 +135,7 @@ export const Skills = () => {
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {category.skills.map((skill) => (
-                    <span key={skill} className="pill">
+                    <span key={skill} className="pill pill-mono">
                       {skill}
                     </span>
                   ))}
@@ -158,7 +158,7 @@ export const Skills = () => {
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {currentlyDeepening.map((item) => (
-                  <span key={item} className="pill pill-accent">
+                  <span key={item} className="pill pill-accent pill-mono">
                     {item}
                   </span>
                 ))}

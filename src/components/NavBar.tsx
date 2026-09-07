@@ -49,7 +49,7 @@ export const NavBar = () => {
           >
             <Search className="w-3.5 h-3.5" />
             <span className="hidden md:inline">Search</span>
-            <kbd className="font-sans text-[10.5px] tracking-wider opacity-70">⌘K</kbd>
+            <kbd className="font-mono text-[10.5px] tracking-wider opacity-70">⌘K</kbd>
           </button>
           <Link
             to="/blogs"

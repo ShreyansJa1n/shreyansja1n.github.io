@@ -9,6 +9,7 @@ import { Certifications } from "@/components/Certifications";
 import { Contact } from "@/components/Contact";
 import { Blogs } from "@/components/Blogs";
 import { Experience } from "@/components/Experience";
+import { OwnershipInAction } from "@/components/OwnershipInAction";
 import { NavBar } from "@/components/NavBar";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { useSearchParams, Navigate } from "react-router-dom";
@@ -31,6 +32,7 @@ const Index = () => {
         <About />
         <Education />
         <Experience />
+        <OwnershipInAction />
         <Projects />
         <Skills />
         <Blogs />

@@ -197,6 +197,20 @@ export const Hero = () => {
             <Github className="h-4 w-4" />
           </a>
         </div>
+
+        <div
+          className="terminal-line mt-8 mx-auto w-fit animate-fade-in"
+          style={{ animationDelay: "980ms", animationFillMode: "both" }}
+        >
+          <span style={{ color: "var(--accent-ink)" }}>$</span>
+          <span>
+            shipped_to:{" "}
+            <span className="font-semibold" style={{ color: "var(--accent-ink)" }}>
+              50M+ users
+            </span>{" "}
+            · Lose It!
+          </span>
+        </div>
       </div>
 
       {/* Scroll indicator */}

@@ -45,7 +45,7 @@ export const About = () => {
           <SectionReveal delay={120}>
             <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
               I&rsquo;m finishing an MS in Computer Science at Northeastern University
-              (GPA 3.94, graduating August 2026), with two years of prior enterprise
+              (GPA 3.96, graduating August 2026), with two years of prior enterprise
               experience at Trellix.
             </p>
             <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
@@ -61,6 +61,11 @@ export const About = () => {
               customer engineering. Comfortable at the customer site thanks to two
               years of enterprise incident work at Trellix, an iOS Co-op at Lose It!,
               and graduate coursework in NLP, ML, and Foundations of AI.
+            </p>
+            <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
+              Two years in industry plus hands-on graduate coursework mean I
+              context-switch across iOS, full-stack, backend, and AI without much
+              ramp-up, so I&rsquo;m easy to onboard onto whatever a team needs next.
             </p>
             <p className="mt-5 text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed">
               I&rsquo;d rather ship one feature that moves a number than three that

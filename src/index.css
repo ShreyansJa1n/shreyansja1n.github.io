@@ -248,6 +248,52 @@
     @apply inline-block text-xs font-semibold uppercase tracking-[0.18em];
     color: var(--accent-ink);
   }
+
+  /* Engineering-log accents: terminal-style corner brackets for featured cards */
+  .card-surface-log {
+    position: relative;
+  }
+
+  .card-surface-log::before,
+  .card-surface-log::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  .card-surface-log::before {
+    top: 16px;
+    left: 16px;
+    border-top: 2px solid var(--accent-border);
+    border-left: 2px solid var(--accent-border);
+  }
+
+  .card-surface-log::after {
+    bottom: 16px;
+    right: 16px;
+    border-bottom: 2px solid var(--accent-border);
+    border-right: 2px solid var(--accent-border);
+  }
+
+  .log-badge {
+    @apply absolute -top-3 right-6 md:right-8 z-10 inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-[0.14em];
+    background-color: var(--surface-raised);
+    color: var(--accent-ink);
+    border: 1px solid var(--accent-border);
+  }
+
+  .terminal-line {
+    @apply inline-flex items-center gap-2 rounded-lg px-3 py-1.5 font-mono text-xs md:text-sm;
+    background-color: var(--surface-subtle);
+    border: 1px solid var(--hairline);
+    color: var(--ink-muted);
+  }
+
+  .pill-mono {
+    @apply font-mono text-[11px] tracking-tight;
+  }
 }
 
 /* Hero mesh-gradient orbs - slowly drifting radial blobs */

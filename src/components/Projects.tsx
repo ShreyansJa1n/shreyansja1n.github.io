@@ -19,7 +19,8 @@ const CaseStudy = ({ project, delay }: { project: Project; delay: number }) => {
   const hasGithub = !!project.githubUrl;
   return (
     <SectionReveal delay={delay}>
-      <article className="card-surface-raised p-8 md:p-10">
+      <article className="card-surface-raised card-surface-log p-8 md:p-10">
+        <span className="log-badge">Featured</span>
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
           <div>
             <span className="eyebrow">Featured case study</span>
@@ -50,7 +51,7 @@ const CaseStudy = ({ project, delay }: { project: Project; delay: number }) => {
 
         <div className="flex flex-wrap gap-2 mb-7">
           {project.technologies.map((tech) => (
-            <span key={tech} className="pill pill-accent">
+            <span key={tech} className="pill pill-accent pill-mono">
               {tech}
             </span>
           ))}
