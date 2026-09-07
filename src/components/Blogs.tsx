@@ -4,6 +4,12 @@ import { SectionReveal } from "./SectionReveal";
 
 const blogs = [
   {
+    title: "Building an Ops Ecosystem for Northeastern Recreation: ID Scanner and nulostfound",
+    description:
+      "How replacing a patchwork of Connect2 and Google Sheets at the Northeastern Rec Center with two in-house systems cut associated costs roughly 95% and kept patron data out of third-party hands.",
+    href: "/blogs/recreation-ecosystem",
+  },
+  {
     title: "Building ShapeTracer: A Multimodal iOS App for Motor Learning Research",
     description:
       "How I designed a SwiftUI app that combines Core Haptics, AVFoundation, and custom CoreGraphics rendering into a coherent feedback loop, and what it took to make a research-grade iOS app I'd trust to ship.",

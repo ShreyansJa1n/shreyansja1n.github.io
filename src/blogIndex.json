@@ -1,5 +1,12 @@
 [
   {
+    "slug": "recreation-ecosystem",
+    "title": "Building an Ops Ecosystem for Northeastern Recreation: ID Scanner and nulostfound",
+    "date": "2026-09-07",
+    "excerpt": "How replacing a patchwork of Connect2 and Google Sheets at the Northeastern Rec Center with two in-house systems cut associated costs roughly 95% and kept patron data out of third-party hands.",
+    "cover": ""
+  },
+  {
     "slug": "k8s-aws",
     "title": "From Static Website to Cloud-Native: A Complete DevOps Journey with Kubernetes",
     "date": "2025-06-03",

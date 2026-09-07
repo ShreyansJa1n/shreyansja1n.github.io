@@ -19,7 +19,7 @@ export const Education = () => {
         <SectionReveal>
           <span className="eyebrow">Education</span>
           <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
-            Northeastern, MSCS, 3.94.
+            Northeastern, MSCS, 3.96.
           </h2>
         </SectionReveal>
 

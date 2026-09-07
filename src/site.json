@@ -5,7 +5,7 @@
       "location": "Boston, MA",
       "degree": "Master of Science in Computer Science",
       "period": "Sept 2024 - Aug 2026",
-      "gpa": "3.94",
+      "gpa": "3.96",
       "coursework": [
         "Mobile App Development (iOS)",
         "Programming Design Paradigms",
@@ -45,8 +45,8 @@
       "location": "Boston, MA",
       "period": "Sept 2024 - April 2025",
       "description": [
-        "Led Theory of Computation as Lead TA across two semesters for 200+ graduate students, owning weekly discussion sections, exam-prep resources, and rubric calibration",
-        "Mentored junior TAs on grading consistency, office-hour facilitation, and student communication"
+        "Promoted to Head TA for Theory of Computation, leading the course across two consecutive semesters for 200+ graduate students and owning weekly discussion sections, exam-prep resources, and rubric calibration",
+        "Mentored fellow TAs on grading consistency, office-hour facilitation, and student communication, helping them grow through their own work"
       ]
     },
     {
@@ -70,11 +70,23 @@
         "featured": true,
         "description": "Ask any SQLite database questions in plain English, privately and locally. Runs on top of Anthropic, OpenAI, Ollama, vLLM, or Apple Intelligence on-device, is read-only by default, and ships as a CLI, a Streamlit playground, and a Model Context Protocol server so Claude Desktop can query the database directly.",
         "problem": "NL to SQL tools either silently hallucinate when they don't know an answer, demand you ship your schema to a third party, or lock you to one model vendor. None of those is acceptable when the database holds real data and you want on-device privacy.",
-        "approach": "Built a provider-agnostic NL to SQL pipeline behind a single LLMProvider protocol so Anthropic, OpenAI, Ollama, vLLM, and Apple Intelligence are one config flag apart. Every generation is constrained to one of three states (ANSWER with SQL, CANNOT_ANSWER with reason, or CLARIFY with a follow-up question), validated with sqlglot, and auto-limited on unbounded reads. Read-only is the default; writes need an explicit flag. The same engine ships as a CLI, a Streamlit playground, and an MCP stdio server with a lazy-schema tool-calling mode that falls back to schema injection when the model can't use tools.",
-        "impact": "Zero silent hallucinations across a 35-question eval harness covering all three response states, with 164 unit tests running in roughly one second. Ships as a CLI, Streamlit playground, and MCP server, demo-ready against any SQLite database with a single command.",
-        "nextSteps": "PostgreSQL and MySQL adapters via the existing SchemaExtractor protocol slot, an optional NL result summarizer, and a multi-connection config manager so one binary can route across several databases.",
+        "approach": "Built a provider-agnostic NL to SQL pipeline behind a single LLMProvider protocol so Anthropic, OpenAI, Ollama, vLLM, and Apple Intelligence are one config flag apart. Every generation is constrained to one of three states (ANSWER with SQL, CANNOT_ANSWER with reason, or CLARIFY with a follow-up question), validated with sqlglot, and auto-limited on unbounded reads. Read-only is the default; writes need an explicit flag. The same engine ships as a CLI, a Streamlit playground, and an MCP stdio server with a lazy-schema tool-calling mode, swapping full schema injection for targeted list_tables and describe_table lookups and falling back automatically when the model or shim can't use tools, plus an optional verify-sql pass where a second, cheap LLM call checks that the generated SQL actually answers the question without ever blocking or retrying.",
+        "impact": "Zero silent hallucinations across a 35-question eval harness covering all three response states, with 190 unit tests running in roughly one second. An opt-in RAG few-shot mode retrieves similar examples from a self-hosted ChromaDB corpus instead of static examples, gated behind an eval comparison before it can become the default, and optional Arize Phoenix observability (OpenTelemetry and OpenInference instrumentation) is available off by default, with tracing failures caught so they never break a query. Ships as a CLI, Streamlit playground, and MCP server, demo-ready against any SQLite database with a single command.",
+        "nextSteps": "PostgreSQL and MySQL adapters via the existing SchemaExtractor protocol slot, an optional NL result summarizer, a multi-connection config manager so one binary can route across several databases, and promoting the RAG example selector to the default once its eval-gating comparison run is complete.",
         "technologies": ["Python", "MCP", "Anthropic Claude", "OpenAI GPT", "Ollama", "sqlglot", "SQLite", "Streamlit", "pytest"],
         "githubUrl": "https://github.com/ShreyansJa1n/nl-db",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Resume Rewriter - Claude Code Plugin",
+        "featured": true,
+        "description": "Claude Code plugin that turns a one-time career interview into a reusable experience and project data bank, then generates a tailored, one-page ATS-friendly resume and cover letter for any job description via three slash commands.",
+        "problem": "Rewriting a resume for every application is repetitive and error-prone, and most AI resume tools either invent qualifications or produce generic, templated bullets that don't survive an ATS scan.",
+        "approach": "Built as a Claude Code plugin combining Skills (multi-phase SKILL.md workflows), sub-agents spawned mid-workflow to rank experience bullets and projects and to run vocabulary-alignment rewrites, and a stateless, personal-data-free Python rendering engine (generate_resume.py, only python-docx and pyyaml as dependencies) that takes a JSON data file and a YAML config file so one script serves every user. An 8-phase pipeline analyzes the job description for must-haves and gaps without fabricating to close them, ranks and rewrites the candidate's real bullets and projects, then runs quality checks (bullet length bounds, an ownership-verb cap, formula variety, a no-em-dash rule, and ATS-format checks) before generating the document. All style, length, and guardrail rules live in one user-editable config.yaml, so behavior changes without touching code.",
+        "impact": "Produces a one-page resume (Garamond 9.5pt, 0.5in margins) built from roughly 7-10 experience bullets and 2-3 selected projects, plus a 3-4 paragraph cover letter, with all personal data and generated files kept in ~/.resume-rewriter/ and ~/Documents/Resumes/, gitignored and never touching the plugin repo.",
+        "nextSteps": "Additional role overlays beyond the current forward deployed / solutions engineer overlay, and broader before/after eval coverage on the anti-hallucination rewrite pass.",
+        "technologies": ["Claude Code Plugin", "Claude Code Skills", "Python", "python-docx", "PyYAML", "Sub-agents"],
+        "githubUrl": "https://github.com/ShreyansJa1n/resume-rewriter-plugin",
         "liveUrl": "#"
       },
       {
@@ -114,9 +126,21 @@
         "liveUrl": "#"
       },
       {
-        "title": "Government ID Scanner for Northeastern Recreation",
-        "description": "Mobile-friendly ID scanner on Google Vision API auto-extracting data into a serverless backend on Cloud Run, deployed across multiple iPads at Northeastern Recreation. Reduced user registration time ~65% and cut operational costs ~70% by replacing manual entry with auto-scaling serverless infrastructure.",
-        "technologies": ["Google Cloud", "Google Vision API", "Cloud Run", "React", "Tailwind", "Firebase"],
+        "title": "Northeastern Recreation Ecosystem - ID Scanner & Lost and Found",
+        "featured": true,
+        "description": "Two production systems built and maintained for Northeastern University Recreation: an ID-scanning entry-tracking platform for front-desk check-ins, and nulostfound, a lost-and-found system used daily by Campus Recreation staff. Both grew out of the same manual front-desk workflows and now run as one small software ecosystem for the department.",
+        "problem": "Northeastern University Recreation ran check-ins and lost-and-found through a patchwork of disconnected tools, Connect2 for some workflows and Google Sheets for others, all maintained manually and separately with no single source of truth. As a front-desk assistant there, I watched colleagues and full-time staff struggle with slow, error-prone manual processes on top of that: entering ID data by hand for every check-in, and tracking lost items on paper with no search, no photos, and no reliable way to return them to patrons.",
+        "approach": "Built the ID Scanner platform first: a Vite, React 19, and TypeScript (strict) single-page app that reads driver license and state ID PDF417 barcodes and passport MRZ codes, backed by a Python 3.13 Firebase Cloud Functions API with Firestore, Cloud Storage, and Google Cloud Vision for OCR, gated behind JWT auth, with separate staging and production Firebase projects and an automated release pipeline (staging deploys on every push to main, production deploys on a version tag). Extended the same ecosystem with nulostfound, a lost-and-found system (React, Tailwind, Netlify Functions, Firebase) where staff log items with photos, search and filter them, and capture a patron's signature on return, with an admin view for stats, CSV export, and PDF reporting. Together, both systems replaced Connect2 and Google Sheets entirely, bringing check-in and lost-and-found under one in-house roof instead of syncing data by hand across separate tools.",
+        "impact": "Consolidating Connect2 and Google Sheets into one in-house system cut associated costs by roughly 95%, removed the dependency on manually syncing data across third-party tools, and keeps all patron data in-house instead of with outside vendors. ID Scanner alone cut registration time roughly 65% versus the old manual process and now runs across 3+ facilities, serving 7,500+ patrons per day. nulostfound is live at ureclostfound.netlify.app and is used daily by Campus Recreation staff to log, search, and resolve lost items, replacing an all-manual, unsearchable process.",
+        "nextSteps": "Expand ID scanning to additional document formats, add per-facility usage analytics, and connect the two systems so a checked-in visitor can be matched against open lost-item reports automatically.",
+        "technologies": ["React", "TypeScript", "Vite", "Firebase", "Firestore", "Google Cloud Vision", "Netlify Functions", "Python", "Tailwind CSS"],
+        "githubUrl": "",
+        "liveUrl": "#"
+      },
+      {
+        "title": "Release Notes Automation - Lose It!",
+        "description": "Claude Code skills and internal tooling built at Lose It! that auto-generate release notes for both internal and external use, going beyond the scope of my co-op role. Developer productivity climbed and the tooling earned praise across the engineering org, accelerating release documentation turnaround by 60%.",
+        "technologies": ["Claude Code", "Claude Code Skills", "Python", "Internal Tooling"],
         "githubUrl": "",
         "liveUrl": "#"
       },
