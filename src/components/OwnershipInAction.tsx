@@ -7,6 +7,11 @@ const stories = [
       "As a front-desk assistant at the Northeastern University Recreation Center, I watched colleagues struggle with slow, error-prone manual check-ins. I pitched and built an ID scanning system from scratch, then grew it into a small ecosystem with a lost-and-found platform (nulostfound). Together they run across 3+ facilities, serving 7,500+ patrons a day.",
   },
   {
+    title: "Shipping Deal Center at Lose It!",
+    body:
+      "Built the Deal Center feature end-to-end in Swift, SwiftUI, and Combine across paywall and pricing experiment flows, generating $100K+ in revenue within 10 days.",
+  },
+  {
     title: "Building beyond the ask at Lose It!",
     body:
       "Release documentation was slowing the team down, so I went beyond my role and built Claude Code skills and internal tooling that auto-generate release notes for internal and external use. Developer productivity climbed, and the work earned praise across the org.",
@@ -25,11 +30,11 @@ export const OwnershipInAction = () => {
         <SectionReveal>
           <span className="eyebrow">Ownership in action</span>
           <h2 className="text-display mt-3 text-3xl md:text-5xl font-semibold text-ink dark:text-ink">
-            Three moments that show how I work.
+            Moments that show how I work.
           </h2>
         </SectionReveal>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {stories.map((story, i) => (
             <SectionReveal key={story.title} delay={i * 90}>
               <article className="card-surface p-7 md:p-8 h-full">
@@ -44,7 +49,7 @@ export const OwnershipInAction = () => {
           ))}
         </div>
 
-        <SectionReveal delay={280}>
+        <SectionReveal delay={370}>
           <p className="mt-10 text-lg md:text-xl text-ink dark:text-ink font-medium text-center">
             That&rsquo;s how I work. I spot a real problem, take ownership of it, and
             ship something people rely on.
