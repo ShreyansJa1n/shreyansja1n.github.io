@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run lint *)",
+      "Bash(npm run build)",
+      "Bash(npm run build *)",
+      "Bash(npx vite --port *)",
+      "Bash(curl -s http://localhost:*)",
+      "Bash(lsof -i *)",
+      "Bash(kill *)",
+      "Bash(mkdir -p .factory/*)",
+      "Bash(scripts/factory/*)",
+      "Bash(git status*)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git fetch *)",
+      "Bash(git checkout -b factory/*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git rebase origin/*)",
+      "Bash(git rebase --abort)",
+      "Bash(git merge-base *)",
+      "Bash(git rev-parse *)",
+      "Bash(git push -u origin factory/*)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue edit *)",
+      "Bash(gh issue comment *)",
+      "Bash(gh label create factory*)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr edit *)",
+      "mcp__factory-browser"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/factory/guard.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

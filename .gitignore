@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Feature factory
+.factory/
+.claude/worktrees/
+__pycache__/
